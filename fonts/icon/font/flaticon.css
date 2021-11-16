@@ -1,0 +1,242 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?b87305426c82b7334315756bf0c80a29") format("truetype"),
+url("./flaticon.woff?b87305426c82b7334315756bf0c80a29") format("woff"),
+url("./flaticon.woff2?b87305426c82b7334315756bf0c80a29") format("woff2"),
+url("./flaticon.eot?b87305426c82b7334315756bf0c80a29#iefix") format("embedded-opentype"),
+url("./flaticon.svg?b87305426c82b7334315756bf0c80a29#flaticon") format("svg");
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-telephone:before {
+    content: "\f101";
+}
+.flaticon-vk-social-logotype:before {
+    content: "\f102";
+}
+.flaticon-google-plus:before {
+    content: "\f103";
+}
+.flaticon-twitter:before {
+    content: "\f104";
+}
+.flaticon-facebook-logo:before {
+    content: "\f105";
+}
+.flaticon-odnoklassniki-logo:before {
+    content: "\f106";
+}
+.flaticon-loupe:before {
+    content: "\f107";
+}
+.flaticon-search-interface-circular-symbol:before {
+    content: "\f108";
+}
+.flaticon-next:before {
+    content: "\f109";
+}
+.flaticon-right-chevron:before {
+    content: "\f10a";
+}
+.flaticon-refreshing:before {
+    content: "\f10b";
+}
+.flaticon-contacts:before {
+    content: "\f10c";
+}
+.flaticon-gmail:before {
+    content: "\f10d";
+}
+.flaticon-percentage:before {
+    content: "\f10e";
+}
+.flaticon-portfolio:before {
+    content: "\f10f";
+}
+.flaticon-specialist-user:before {
+    content: "\f110";
+}
+.flaticon-visitor:before {
+    content: "\f111";
+}
+.flaticon-check:before {
+    content: "\f112";
+}
+.flaticon-manufacturing:before {
+    content: "\f113";
+}
+.flaticon-efficiency:before {
+    content: "\f114";
+}
+.flaticon-free-delivery:before {
+    content: "\f115";
+}
+.flaticon-setting:before {
+    content: "\f116";
+}
+.flaticon-best-seller:before {
+    content: "\f117";
+}
+.flaticon-tag:before {
+    content: "\f118";
+}
+.flaticon-price-tag:before {
+    content: "\f119";
+}
+.flaticon-discount:before {
+    content: "\f11a";
+}
+.flaticon-map-book:before {
+    content: "\f11b";
+}
+.flaticon-contact-book:before {
+    content: "\f11c";
+}
+.flaticon-black-bubble-speech:before {
+    content: "\f11d";
+}
+.flaticon-file:before {
+    content: "\f11e";
+}
+.flaticon-exclamation-mark-in-a-circle:before {
+    content: "\f11f";
+}
+.flaticon-question-mark-in-dark-circle:before {
+    content: "\f120";
+}
+.flaticon-blueprint:before {
+    content: "\f121";
+}
+.flaticon-plan:before {
+    content: "\f122";
+}
+.flaticon-menu:before {
+    content: "\f123";
+}
+.flaticon-remove:before {
+    content: "\f124";
+}
+.flaticon-tick-mark:before {
+    content: "\f125";
+}
+.flaticon-pdf-file-format-symbol:before {
+    content: "\f126";
+}
+.flaticon-xls-file-format-symbol:before {
+    content: "\f127";
+}
+.flaticon-txt-text-file-extension-symbol:before {
+    content: "\f128";
+}
+.flaticon-dwg-file-format-variant:before {
+    content: "\f129";
+}
+.flaticon-cad-file-format-symbol:before {
+    content: "\f12a";
+}
+.flaticon-zip-compressed-files-extension:before {
+    content: "\f12b";
+}
+.flaticon-dxf-file-format-symbol:before {
+    content: "\f12c";
+}
+.flaticon-doc-file-format-symbol:before {
+    content: "\f12d";
+}
+.flaticon-exit:before {
+    content: "\f12e";
+}
+.flaticon-evacuation-plan-1:before {
+    content: "\f12f";
+}
+.flaticon-evacuation-plan-4:before {
+    content: "\f130";
+}
+.flaticon-evacuation-plan-5:before {
+    content: "\f131";
+}
+.flaticon-exit-1:before {
+    content: "\f132";
+}
+.flaticon-emergency-sign:before {
+    content: "\f133";
+}
+.flaticon-emergency-exit:before {
+    content: "\f134";
+}
+.flaticon-at:before {
+    content: "\f135";
+}
+.flaticon-letter:before {
+    content: "\f136";
+}
+.flaticon-email-at:before {
+    content: "\f137";
+}
+.flaticon-arrow-point-to-right:before {
+    content: "\f138";
+}
+.flaticon-right-arrow-angle:before {
+    content: "\f139";
+}
+.flaticon-turning-left-straight-angle-arrow:before {
+    content: "\f13a";
+}
+.flaticon-right-arrow-angle-1:before {
+    content: "\f13b";
+}
+.flaticon-fast-forward-double-right-arrows:before {
+    content: "\f13c";
+}
+.flaticon-right-arrow:before {
+    content: "\f13d";
+}
+.flaticon-right:before {
+    content: "\f13e";
+}
+.flaticon-double-chevron:before {
+    content: "\f13f";
+}
+.flaticon-right-arrow-black-triangle:before {
+    content: "\f140";
+}
+.flaticon-double-angle-pointing-to-right:before {
+    content: "\f141";
+}
+.flaticon-play-filled-triangle-button-of-right-arrow:before {
+    content: "\f142";
+}
+.flaticon-document:before {
+    content: "\f143";
+}
+.flaticon-left-arrow:before {
+    content: "\f144";
+}
+.flaticon-left-arrow-1:before {
+    content: "\f145";
+}
+.flaticon-drawing-compass:before {
+    content: "\f146";
+}
+.flaticon-google-sketchup-logotype:before {
+    content: "\f147";
+}
+.flaticon-evacuation:before {
+    content: "\f148";
+}
+.flaticon-clock:before {
+    content: "\f149";
+}
+.flaticon-calendar:before {
+    content: "\f14a";
+}
