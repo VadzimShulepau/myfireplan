@@ -121,6 +121,7 @@ function date() {
   let calendar = new Date();
   let day = calendar.getDate();
   let month = calendar.getMonth();
+  let year = calendar.getFullYear();
   if (day < 10) {
     day = '0' + day;
   };
