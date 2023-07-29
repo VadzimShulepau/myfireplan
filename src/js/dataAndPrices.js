@@ -1,4 +1,4 @@
-export const dataAndPrices = function () {
+export default function dataAndPrices() {
   function changeContacts() {
     const phoneNumbers = document.querySelectorAll('a[href^="tel:"]');
     const mailsTo = document.querySelectorAll('a[href^="mailto:"]');
@@ -23,7 +23,6 @@ export const dataAndPrices = function () {
 
 
   function prices () {
-    
   const a3InLamination = document.querySelector('.a3-in-lamination');
   const a3InLaminationWithPhotolum = document.querySelector('.a3-in-lamination-with-photolum');
   const a3PVCWithoutBorder = document.querySelector('.a3-PVC-without-border');
@@ -34,13 +33,13 @@ export const dataAndPrices = function () {
 
   if (a3InLamination || a3InLaminationWithPhotolum || a3PVCWithoutBorder || a3PVCWithBorder || a3PVCWithoutBorderWithPhotolum || a3PVCWithBorderWithPhotolum || a3PVCFramed) {
 
-    a3InLamination.innerText = '39';
-    a3InLaminationWithPhotolum.innerText = '46';
-    a3PVCWithoutBorder.innerText = '59';
-    a3PVCWithBorder.innerText = '76';
-    a3PVCWithoutBorderWithPhotolum.innerText = '72';
-    a3PVCWithBorderWithPhotolum.innerText = '85';
-    a3PVCFramed.innerText = '110';
+    a3InLamination.textContent = '39';
+    a3InLaminationWithPhotolum.textContent = '46';
+    a3PVCWithoutBorder.textContent = '59';
+    a3PVCWithBorder.textContent = '76';
+    a3PVCWithoutBorderWithPhotolum.textContent = '72';
+    a3PVCWithBorderWithPhotolum.textContent = '85';
+    a3PVCFramed.textContent = '110';
   };
   };
   prices();
