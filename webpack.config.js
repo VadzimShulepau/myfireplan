@@ -1,68 +1,88 @@
 const path = require('path');
-const HTMLWebpackPlugin =require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
-
-const mode = process.argv.at(3) || 'development';
-const isDevMode = mode === 'development';
 
 module.exports = {
-  mode,
-  devtool: isDevMode && 'source-map',
-  // context: path.resolve(__dirname, 'src'),
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
-    },
-    port: 3000,
-    open: true,
-    compress: true,
-    hot: true,
-    historyApiFallback: true,
-  },
+  mode: 'development',
+  // watch: true,
   entry: {
-    index: ['@babel/polyfill' ,path.resolve(__dirname, 'src', 'index.js')], // [name].js, babel polyfill for async functions
+    main: path.resolve(__dirname, 'src', 'index.js'),
   },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    assetModuleFilename: './assets/[name].[hash][ext]',
   },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    port: 3000,
+    hot: true,
+    compress: true,
+    open: true,
+  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /\.html$/i,
-        use: [{
+        use: {
           loader: 'html-loader',
           options: {
-            minimize: !isDevMode,
-          },
-        }],
-      },
-      {
-        test: /\.[c|sc|sa]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.js$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties'], //for read classes
+            minimize: {
+              removeComments: false,
+              collapseWhitespace: false,
+            },
           },
         },
       },
-    ]
+      {
+        test: /\.css$/i,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/fonts/[name][ext]',
+        }
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/img/[name][ext]',
+        }
+      },
+    ],
   },
   plugins: [
-    new HTMLWebpackPlugin({
-      // template: './index.html', // with use context
-      template: path.resolve(__dirname, 'src', 'index.html'),
+    new HtmlWebpackPlugin({
       filename: 'index.html',
-      favicon: './src/favicon.ico',
-      scriptLoading: 'defer',
-      minify: !isDevMode,
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
     }),
-  ]
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'css'),
+          to: path.resolve(__dirname, 'dist', 'css'),
+        },
+        {
+          from: path.resolve(__dirname, 'src', 'assets'),
+          to: path.resolve(__dirname, 'dist', 'assets'),
+        },
+      ]
+    }),
+  ],
 };
