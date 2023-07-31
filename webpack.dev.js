@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+
 
 
 module.exports = {
@@ -45,7 +44,7 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-        ]
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf)$/i,
@@ -68,21 +67,6 @@ module.exports = {
       filename: 'index.html',
       template: path.resolve(__dirname, 'src', 'index.html'),
       favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src', 'css'),
-          to: path.resolve(__dirname, 'dist', 'css'),
-        },
-        {
-          from: path.resolve(__dirname, 'src', 'assets'),
-          to: path.resolve(__dirname, 'dist', 'assets'),
-        },
-      ]
     }),
   ],
 };
