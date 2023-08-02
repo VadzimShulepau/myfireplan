@@ -5,17 +5,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="План эвакуации РБ. Разработка. Изготовление. Наши преимущества. Наши партнеры.">
-	<!-- <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
-	<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="120x120"> -->
-	<!-- <link rel="stylesheet" href="assets/fonts/icon/font/flaticon.css" type="text/css"> -->
-	<!-- <link rel="stylesheet" href="css/swiper-bundle.min.css" type="text/css"> -->
-	<!-- <link rel="stylesheet" href="css/style.css" type="text/css"> -->
 	<title>План эвакуации РБ</title>
 </head>
-
 <body>
 	<div class="container">
-<!-- HEADER -->
+		<!-- HEADER -->
+		<%= require('html-loader!./pages/components/header.html').default %>
 		<a href="#top" class="to-top flaticon-double-chevron"></a>
 		<main>
 			<div class="content-development">
@@ -196,6 +191,7 @@
 			</div>
 		</main>
 		<!-- FOOTER -->
+		<%= require('html-loader!./pages/components/footer.html').default %>
 	</div>
 	<!-- <script src="index.js"></script> -->
 </body>
