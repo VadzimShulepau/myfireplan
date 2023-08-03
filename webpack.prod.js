@@ -64,52 +64,61 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
+      chunkFilename: '[id].css',
     }),
     new CopyPlugin({
       patterns: [
+        // {
+        //   from: path.resolve(__dirname, 'src', 'assets', 'adjustment'),
+        //   to: path.resolve(__dirname, 'dist', 'assets', 'adjustment'),
+        // },
+        // {
+        //   from: path.resolve(__dirname, 'src', 'assets', 'img'),
+        //   to: path.resolve(__dirname, 'dist', 'assets', 'img'),
+        // },
         {
-          from: path.resolve(__dirname, 'src', 'assets', 'adjustment'),
-          to: path.resolve(__dirname, 'dist', 'assets', 'adjustment'),
+          from: path.resolve(__dirname, './src/assets/img/dominos.png'),
+          to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
         },
         {
-          from: path.resolve(__dirname, 'src', 'assets', 'img'),
-          to: path.resolve(__dirname, 'dist', 'assets', 'img'),
+          from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
+          to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
+        },
+        {
+          from: path.resolve(__dirname, './src/assets/adjustment/'),
+          to: path.resolve(__dirname, './dist/assets/adjustment/'),
         },
       ]
     }),
   ],
   module: {
     rules: [
-      // {
-      //   test: /\.html$/i,
-      //   use: {
-      //     loader: 'html-loader',
-      //     options: {
-      //       esModule: true,
-      //     },
-      //   },
-      // },
       {
         test: /\.css$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false,
+            },
+          },
           { loader: 'css-loader' },
         ],
       },
-      // {
-      //   test: /\.(woff|woff2|eot|ttf)$/i,
-      //   type: 'asset/resource',
-      //   // generator: {
-      //   //   filename: './assets/fonts/[name][ext]',
-      //   // }
-      // },
-      // {
-      //   test: /\.(png|jpg|jpeg|svg|gif)$/i,
-      //   type: 'asset/resource',
-      //   // generator: {
-      //   //   filename: './assets/img/[name][ext]',
-      //   // }
-      // },
+      {
+        test: /\.(woff|woff2|eot|ttf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/fonts/[name][ext]',
+        }
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: './assets/img/[name][ext]',
+        }
+      },
     ],
   },
 };
