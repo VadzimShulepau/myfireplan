@@ -6,6 +6,36 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 
+const cssLoaderOptions = () => {
+  return {
+    esModule: true,
+    modules: {
+      mode: "global",
+      exportGlobals: true,
+      namedExport: true,
+      exportLocalsConvention: 'dashesOnly',
+      exportOnlyLocals: false,
+    },
+  };
+};
+
+const copyPluginPatterns = () => {
+  return [
+    {
+      from: path.resolve(__dirname, './src/assets/img/dominos.png'),
+      to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
+    },
+    {
+      from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
+      to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
+    },
+    {
+      from: path.resolve(__dirname, './src/assets/adjustment/'),
+      to: path.resolve(__dirname, './dist/assets/adjustment/'),
+    },
+  ];
+};
+
 module.exports = {
   mode: 'production',
   entry: {
@@ -57,20 +87,7 @@ module.exports = {
       chunkFilename: '[id].[contenthash].css',
     }),
     new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-          to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-        },
-        {
-          from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-          to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-        },
-        {
-          from: path.resolve(__dirname, './src/assets/adjustment/'),
-          to: path.resolve(__dirname, './dist/assets/adjustment/'),
-        },
-      ]
+      patterns: copyPluginPatterns(),
     }),
   ],
   module: {
@@ -83,16 +100,7 @@ module.exports = {
           },
           {
             loader: "css-loader",
-            options: {
-              esModule: true,
-              modules: {
-                mode: "global",
-                exportGlobals: true,
-                namedExport: true,
-                exportLocalsConvention: 'dashesOnly',
-                exportOnlyLocals: false,
-              },
-            },
+            options: cssLoaderOptions(),
           },
         ],
       },
