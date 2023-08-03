@@ -2016,8 +2016,8 @@ input[type="file"] {
 	margin: 10px auto 0 30%;
 	max-width: 250px;
 }
-
-.file-name {
+/* this */
+.file-name-load {
 	display: inline-flex;
 	/* align-self: flex-start; */
 	/* margin: 0 auto 0 30%; */

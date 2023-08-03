@@ -1,13 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
+  watch: false,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   },
@@ -15,32 +13,20 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // assetModuleFilename: './assets/[name].[hash][ext]',
-    // publicPath: 'dist',
   },
   resolve: {
     extensions: ['.js', '.json', '.css'],
   },
-  devtool: false,
-  optimization: {
-    minimizer: [
-      new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            'default',
-            {
-              discardComments: { removeAll: true }
-            },
-          ],
-        },
-      }),
-      new TerserWebpackPlugin({
-        terserOptions: {
-          compress: true,
-        }
-      }),
-    ]
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    port: 3000,
+    hot: true,
+    compress: true,
+    open: true,
   },
+  devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
@@ -48,13 +34,9 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
       favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
       minify: {
-        collapseWhitespace: true,
-        removeComments: true,
+        collapseWhitespace: false,
+        removeComments: false,
       }
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-      chunkFilename: '[id].[contenthash].css',
     }),
     new CopyPlugin({
       patterns: [
@@ -77,12 +59,9 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [
+        use: ['style-loader',
           {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               esModule: true,
               modules: {
