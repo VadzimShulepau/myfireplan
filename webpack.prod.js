@@ -1,13 +1,16 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
+const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
+const htmlPages = [];
+fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file));
 
-const cssLoaderOptions = () => {
-  return {
+const cssLoaderOptions = {
     esModule: true,
     modules: {
       mode: "global",
@@ -17,10 +20,8 @@ const cssLoaderOptions = () => {
       exportOnlyLocals: false,
     },
   };
-};
 
-const copyPluginPatterns = () => {
-  return [
+const copyPluginPatterns = [
     {
       from: path.resolve(__dirname, './src/assets/img/dominos.png'),
       to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
@@ -33,7 +34,32 @@ const copyPluginPatterns = () => {
       from: path.resolve(__dirname, './src/assets/adjustment/'),
       to: path.resolve(__dirname, './dist/assets/adjustment/'),
     },
+    {
+      from: path.resolve(__dirname, './src/assets/img/maket'),
+      to: path.resolve(__dirname, './dist/assets/img/maket'),
+    },
   ];
+
+const optimize = () => {
+  return {
+    minimizer: [
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true }
+            },
+          ],
+        },
+      }),
+      new TerserWebpackPlugin({
+        terserOptions: {
+          compress: true,
+        }
+      }),
+    ],
+  };
 };
 
 module.exports = {
@@ -52,25 +78,7 @@ module.exports = {
     extensions: ['.js', '.json', '.css'],
   },
   devtool: false,
-  optimization: {
-    minimizer: [
-      new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            'default',
-            {
-              discardComments: { removeAll: true }
-            },
-          ],
-        },
-      }),
-      new TerserWebpackPlugin({
-        terserOptions: {
-          compress: true,
-        }
-      }),
-    ]
-  },
+  optimization: optimize(),
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
@@ -87,7 +95,7 @@ module.exports = {
       chunkFilename: '[id].[contenthash].css',
     }),
     new CopyPlugin({
-      patterns: copyPluginPatterns(),
+      patterns: copyPluginPatterns,
     }),
   ],
   module: {
@@ -100,7 +108,7 @@ module.exports = {
           },
           {
             loader: "css-loader",
-            options: cssLoaderOptions(),
+            options: cssLoaderOptions,
           },
         ],
       },
@@ -109,14 +117,39 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: './assets/fonts/[name][ext]',
-        }
+        },
       },
       {
         test: /\.(png|jpg|jpeg|svg|gif|pdf)$/i,
+        use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
         type: 'asset/resource',
         generator: {
           filename: './assets/img/[name][ext]',
-        }
+        },
       },
       {
         test: /\.js$/i,

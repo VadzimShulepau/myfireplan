@@ -23,6 +23,7 @@
     "css-minimizer-webpack-plugin": "^5.0.1",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
+    "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.7.6",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "^5.3.9",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "swiper": "^10.0.4"
+    "normalize.css": "^8.0.1",
+    "swiper": "^6.5.7"
   }
 }

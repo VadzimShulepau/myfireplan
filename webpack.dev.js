@@ -2,35 +2,44 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
-
-const cssLoaderOptions = () => {
-  return {
-    esModule: true,
-    modules: {
-      mode: "global",
-      exportGlobals: true,
-      namedExport: true,
-      exportLocalsConvention: 'dashesOnly',
-      exportOnlyLocals: false,
-    },
-  };
+const cssLoaderOptions = {
+  esModule: true,
+  modules: {
+    mode: "global",
+    exportGlobals: true,
+    namedExport: true,
+    exportLocalsConvention: 'dashesOnly',
+    exportOnlyLocals: false,
+  },
 };
 
-const copyPluginPatterns = () => {
-  return [
-    {
-      from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-      to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-    },
-    {
-      from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-      to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-    },
-    {
-      from: path.resolve(__dirname, './src/assets/adjustment/'),
-      to: path.resolve(__dirname, './dist/assets/adjustment/'),
-    },
-  ];
+const copyPluginPatterns = [
+  {
+    from: path.resolve(__dirname, './src/assets/img/dominos.png'),
+    to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
+    to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/adjustment/'),
+    to: path.resolve(__dirname, './dist/assets/adjustment/'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/img/maket'),
+    to: path.resolve(__dirname, './dist/assets/img/maket'),
+  },
+];
+
+const devServer = {
+  static: {
+    directory: path.resolve(__dirname, 'dist'),
+  },
+  port: 3000,
+  hot: true,
+  compress: true,
+  open: true,
 };
 
 module.exports = {
@@ -47,15 +56,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css'],
   },
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'dist'),
-    },
-    port: 3000,
-    hot: true,
-    compress: true,
-    open: true,
-  },
+  devServer,
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
@@ -69,7 +70,7 @@ module.exports = {
       }
     }),
     new CopyPlugin({
-      patterns: copyPluginPatterns(),
+      patterns: copyPluginPatterns,
     }),
   ],
   module: {
@@ -79,7 +80,7 @@ module.exports = {
         use: ['style-loader',
           {
             loader: 'css-loader',
-            options: cssLoaderOptions(),
+            options: cssLoaderOptions,
           },
         ],
       },
@@ -88,14 +89,14 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: './assets/fonts/[name][ext]',
-        }
+        },
       },
       {
         test: /\.(png|jpg|jpeg|svg|gif|pdf)$/i,
         type: 'asset/resource',
         generator: {
           filename: './assets/img/[name][ext]',
-        }
+        },
       },
       {
         test: /\.js$/i,

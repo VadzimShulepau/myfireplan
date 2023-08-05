@@ -1,9 +1,6 @@
 import Swiper from 'swiper';
-import 'swiper/css';
 
-export default function slider() {
-  const slide = document.querySelector('.slider');
-  if (slide) {
+export default function swiper() {
     const slider = new Swiper('.slider', {
       navigation: {
         nextEl: '.next-btn',
@@ -71,6 +68,4 @@ export default function slider() {
 
       },
     });
-  };
 };
-// slider();
