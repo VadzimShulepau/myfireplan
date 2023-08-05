@@ -184,4 +184,15 @@ export default function mainFunc() {
     };
   };
   fileView();
+
+  function toggleNavLink() {
+    const currentLink = location.pathname.split('/').at(-1);
+    const navLinks = document.querySelectorAll('nav li');
+
+    for (let navLink of navLinks) {
+      const navLinkA = navLink.querySelector('a').href.split('/').at(-1);
+      (navLinkA === currentLink ) && navLink.classList.add('nav__button-active');
+    };
+  };
+  toggleNavLink();
 };
