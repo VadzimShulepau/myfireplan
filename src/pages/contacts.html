@@ -106,63 +106,7 @@
 					</div>
 				</div> <!-- schedule-main__contacts -->
 			</main>
-			<aside>
-				<div class="accordeon__wrapper">
-					<div class="menu__accordeon">
-						<a class="button">заказать планы эвакуации</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-						<ul class="menu__accordeon-drop">
-							<li><a href="products.html">формат А3 в ламинации</a></li>
-							<li><a href="products.html">формат А3 в ламинации с фотолюминесцентным покрытием</a></li>
-							<li><a href="products.html">формат А3 ПВХ без борта</a></li>
-							<li><a href="products.html">формат А3 ПВХ с бортом</a></li>
-							<li><a href="products.html">формат А3 ПВХ без борта с фотолюминесцентным покрытием</a></li>
-							<li><a href="products.html">формат А3 ПВХ с бортом с фотолюминесцентным покрытием</a></li>
-							<li><a href="products.html">формат А3 ПВХ в рамке</a></li>
-						</ul>
-					</div> <!-- заказать планы эвакуации -->
-
-					<div class="menu__accordeon">
-						<a class="button">заказать схему движения</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-						<ul class="menu__accordeon-drop brop-height">
-							<li><a href="products.html">Схема движения</a></li>
-						</ul>
-					</div> <!-- заказать схему движения -->
-
-					<!-- <div class="menu__accordeon">
-					<a class="button">заказать пожарно-технический расчет</a><span
-						class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop brop-height">
-						<li><a href="products.html">Пожарно-технический расчет</a></li>
-					</ul>
-				</div> заказать пожарно технический расчет -->
-				</div>
-				<div class="contacts">
-					<p>Контакты</p>
-					<div>
-						<div class="contacts__phone-wrapper">
-							<span class="flaticon-telephone"></span>
-							<a href="tel:+375291382403" title="Телефон" target="_blank"> +375 (29) 138 24 03</a>
-						</div>
-						<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"><span
-								class="flaticon-vk-social-logotype"></span> ВКонтакте</a>
-						<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank"><span class="flaticon-email-at"></span>
-							e-mail</a>
-					</div>
-				</div>
-				<div class="schedule">
-
-					<p>График работы</p>
-					<ul>
-						<li>Понедельник - с 7:00 до 23:00</li>
-						<li>Вторник - с 7:00 до 23:00</li>
-						<li>Среда - с 7:00 до 23:00</li>
-						<li>Четверг - с 7:00 до 23:00</li>
-						<li>Пятница - с 7:00 до 23:00</li>
-						<li>Суббота - с 9:00 до 19:00</li>
-						<li>Воскресенье - с 9:00 до 19:00</li>
-					</ul>
-				</div>
-			</aside>
+			<%= require('html-loader!./components/aside.html').default %>
 			<%= require('html-loader!./components/footer.html').default %>
 	</div>
 	<!-- <script type="module" defer src="../index.js"></script> -->
