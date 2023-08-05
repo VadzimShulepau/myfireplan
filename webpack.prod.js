@@ -35,29 +35,49 @@ const cssLoaderOptions = {
 };
 
 const copyPluginPatterns = [
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/dominos.png'),
+  //   to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
+  //   to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/adjustment'),
+  //   to: path.resolve(__dirname, './dist/assets/adjustment'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/maket'),
+  //   to: path.resolve(__dirname, './dist/assets/img/maket'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/files'),
+  //   to: path.resolve(__dirname, './dist/assets/files'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/certificates'),
+  //   to: path.resolve(__dirname, './dist/assets/certificates'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/category_sprite.webp'),
+  //   to: path.resolve(__dirname, './dist/assets/img/category_sprite.webp'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/class_z.webp'),
+  //   to: path.resolve(__dirname, './dist/assets/img/class_z.webp'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/form_img.jpg'),
+  //   to: path.resolve(__dirname, './dist/assets/img/form_img.jpg'),
+  // },
+  // {
+  //   from: path.resolve(__dirname, './src/assets/img/form_img3.jpg'),
+  //   to: path.resolve(__dirname, './dist/assets/img/form_img3.jpg'),
+  // },
   {
-    from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-    to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-  },
-  {
-    from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-    to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-  },
-  {
-    from: path.resolve(__dirname, './src/assets/adjustment/'),
-    to: path.resolve(__dirname, './dist/assets/adjustment/'),
-  },
-  {
-    from: path.resolve(__dirname, './src/assets/img/maket'),
-    to: path.resolve(__dirname, './dist/assets/img/maket'),
-  },
-  {
-    from: path.resolve(__dirname, './src/assets/files'),
-    to: path.resolve(__dirname, './dist/assets/files'),
-  },
-  {
-    from: path.resolve(__dirname, './src/assets/certificates'),
-    to: path.resolve(__dirname, './dist/assets/certificates'),
+    from: path.resolve(__dirname, './src/assets'),
+    to: path.resolve(__dirname, './dist/assets'),
   },
 ];
 
@@ -138,9 +158,9 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: './assets/fonts/[name][ext]',
-        },
+        // generator: {
+        //   filename: './assets/fonts/[name][ext]',
+        // },
       },
       {
         test: /\.(png|jpg|jpeg|svg|gif|webp)$/i,
@@ -170,9 +190,9 @@ module.exports = {
           },
         ],
         type: 'asset/resource',
-        generator: {
-          filename: './assets/img/[name][ext]',
-        },
+        // generator: {
+        //   filename: './assets/img/[name][ext]',
+        // },
       },
       {
         test: /\.js$/i,
