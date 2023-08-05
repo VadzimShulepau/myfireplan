@@ -44,7 +44,7 @@ const devServer = {
 
 module.exports = {
   mode: 'development',
-  watch: false,
+  watch: true,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   },

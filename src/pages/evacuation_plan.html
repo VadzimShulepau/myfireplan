@@ -6,10 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description"
 		content="План эвакуации РБ. Назначение плана эвакуации. Форма плана эвакуации. Заказать план эвакуации.">
-	<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon" sizes="120x120">
-	<link rel="stylesheet" href="../fonts/icon/font/flaticon.css" type="text/css">
-	<link rel="stylesheet" href="../css/style.css" type="text/css">
+
 	<title>Разработка плана эвакуации. План эвакуации РБ</title>
 </head>
 
@@ -18,229 +15,235 @@
 	<div class="container">
 
 		<%= require('html-loader!./components/header.html').default %>
-		<a href="#top" class="to-top flaticon-double-chevron"></a>
+			<a href="#top" class="to-top flaticon-double-chevron"></a>
 
-		<main class="grid_evacuation__plan">
-			<div class="block-1">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>План эвакуации</p>
-				</div>
-				<div class="card-text">
-					<p><strong>План эвакуации</strong> - документ, в котором указаны эвакуационные пути и выходы, обозначены
-						технических средств противопожарной защиты и средства оповещения о пожаре, установлены правила поведения
-						людей, а также порядок и последовательность действий обслуживающего персонала на объекте при возникновении
-						ЧП.</p>
-
-					<p>Для эвакуации транспортных средств, техники, автомобилей с территории изготавливается план эвакуации
-						транспортных средств при пожаре или иначе схема движения по территории.</p>
-
-					<p>В случае эвакуации из гаража может быть составлен отдельный план эвакуации автотранспорта (автомобилей) при
-						пожаре.</p>
-
-					<p>План эвакуации людей на случай возникновения пожара позволяет принять необходимые меры по эвакуации людей с
-						мест массового скопления, из кабинета, при пожаре в школе, при возникновении чрезвычайных ситуаций.</p>
-				</div>
-			</div> <!-- block-1 -->
-
-			<div class="block-3">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>Назначение плана эвакуации</p>
-				</div>
-				<div class="card-text">
-					<ul>
-						<li>точно обозначить основной и запасной пути эвакуации, обозначить эвакуационные выходы, обеспечивающие
-							безопасность процесса самостоятельного движения людей из помещений, в которых имеется возможность
-							воздействия на них опасных факторов пожара, без учета применяемых в них средств пожаротушения и защиты от
-							дыма;</li>
-						<li>указать расположение пожарного оборудования включая средства тушения пожара и средств оповещения о
-							пожаре;</li>
-						<li>напомнить порядок действий, которые необходимо предпринять человеку, обнаружившему пожар.</li>
-					</ul>
-				</div>
-			</div> <!-- block-3 -->
-
-			<div class="block-2">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>нормативные документы</p>
-				</div>
-				<div>
-					<div class="card-img ">
-						<img src="../assets/img/form_img.jpg" alt="maket" tabindex="0">
-						<img src="../assets/img/form_img3.jpg" alt="maket" tabindex="0">
+			<main class="grid_evacuation__plan">
+				<div class="block-1">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>План эвакуации</p>
 					</div>
 					<div class="card-text">
-						<strong>Форма плана эвакуации должна соответствовать:</strong>
-						<ol>
-							<li><strong>Правилам пожарной безопасности Республики Беларусь</strong>, утвержденным Постановлением
-								Министерства по чрезвычайным ситуациям Республики Беларусь от 14.03.2014 № 3
-								(в ред. постановлений МЧС от 26.08.2014 № 25, от 01.06.2015 № 27, от 25.02.2016 № 14).<br>
-								<div class="modal-window">
-									<button class="modal-btn flaticon-pdf-file-format-symbol">посмотреть</button>
-									<div class="modal-shadow"></div>
-									<div class="modal">
-										<button class="modal-btn--close flaticon-remove"></button>
-										<object rel="preload" data="./assets/img/PravilaPB.pdf" type="application/pdf">
-										</object>
-									</div>
-								</div>
-							</li>
+						<p><strong>План эвакуации</strong> - документ, в котором указаны эвакуационные пути и выходы, обозначены
+							технических средств противопожарной защиты и средства оповещения о пожаре, установлены правила поведения
+							людей, а также порядок и последовательность действий обслуживающего персонала на объекте при возникновении
+							ЧП.</p>
 
-							<li><strong>Постановлению Министерства по чрезвычайным ситуациям Республики Беларусь</strong> №21 от
-								20.04.2018 "Об установлении формы плана эвакуации людей при пожаре":<br>
-								<div class="modal-window">
-									<button class="modal-btn flaticon-pdf-file-format-symbol" -2">посмотреть</button>
-									<div class="modal-shadow"></div>
-									<div class="modal">
-										<button class="modal-btn--close flaticon-remove"></button>
-										<object rel="preload" data="./assets/img/постановление_мчс.pdf" type="application/pdf">
-										</object>
-									</div>
-								</div>
-								<ul>
-									<li><strong>План эвакуации</strong> должен состоять из графической и текстовой (инструкции) частей.
-									</li>
+						<p>Для эвакуации транспортных средств, техники, автомобилей с территории изготавливается план эвакуации
+							транспортных средств при пожаре или иначе схема движения по территории.</p>
 
-									<li> План эвакуации утверждается руководителем организации.</li>
+						<p>В случае эвакуации из гаража может быть составлен отдельный план эвакуации автотранспорта (автомобилей)
+							при
+							пожаре.</p>
 
-									<li> На плане должны быть отображены: лестничные клетки, лифты и лифтовые холлы, жилые комнаты,
-										хозяйственно-бытовые помещения, балконы, наружные лестницы, а также двери лестничных клеток,
-										лифтовых холлов и дверей, расположенные на пути на пути эвакуации. Наименования помещений должны
-										быть обозначены непосредственно на планах этажей либо их нумеруют и проводят экспликацию помещений.
-										Двери на плане должны быть показаны в открытом виде. Если при эксплуатации отдельные выходы заперты,
-										на плане эвакуации дверной проём должен быть изображён закрытым, а место хранения ключей должно быть
-										обозначено надписью: "Ящик с ключом от наружной двери". Если здание имеет наружную пожарную
-										лестницу, то в плане должна быть надпись: "Выход на пожарную лестницу". Основные пути эвакуации
-										показывают сплошной линией, а запасные - пунктирной. Линии путей эвакуации должны приводиться из
-										каждого помещения до выхода в безопасное место, либо непосредственно наружу. На графической части
-										указываются номера телефонов вызова пожарных аварийно-спасательных подразделений, руководителя и
-										ответственного дежурного по объекту.</li>
-
-									<li> C помощью условных обозначений показывают места размещения: ручных пожарных извещателей, пожарных
-										кранов, кнопок пуска системы дымоудаления, пожарных кранов, огнетушителей, телефонов для вызова
-										ПАСП, приёмно-контрольных приборов, плана эвакуации. Расшифровка условных обозначений даётся на
-										русском или белорусском языках.</li>
-
-									<li> Текстовая часть плана эвакуации должна представлять собой утверждённую руководителем объекта
-										инструкцию, выполненную в виде таблицы, содержащей порядок и перечень действий при пожаре, их
-										последовательность, должность и фамилии исполнителей.</li>
-
-									<li> Размещаются планы эвакуации на видном месте на каждом этаже у входов в лестничные клетки
-										эвакуационных выходов, в помещениях дежурного персонала.</li>
-
-								</ul>
-						</ol>
+						<p>План эвакуации людей на случай возникновения пожара позволяет принять необходимые меры по эвакуации людей
+							с
+							мест массового скопления, из кабинета, при пожаре в школе, при возникновении чрезвычайных ситуаций.</p>
 					</div>
+				</div> <!-- block-1 -->
 
-				</div>
-			</div> <!-- block-2 -->
+				<div class="block-3">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>Назначение плана эвакуации</p>
+					</div>
+					<div class="card-text">
+						<ul>
+							<li>точно обозначить основной и запасной пути эвакуации, обозначить эвакуационные выходы, обеспечивающие
+								безопасность процесса самостоятельного движения людей из помещений, в которых имеется возможность
+								воздействия на них опасных факторов пожара, без учета применяемых в них средств пожаротушения и защиты
+								от
+								дыма;</li>
+							<li>указать расположение пожарного оборудования включая средства тушения пожара и средств оповещения о
+								пожаре;</li>
+							<li>напомнить порядок действий, которые необходимо предпринять человеку, обнаружившему пожар.</li>
+						</ul>
+					</div>
+				</div> <!-- block-3 -->
 
-			<div class="block-4">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>Заказать план эвакуации</p>
-				</div>
-				<div class="card-text">
-					<strong>Предлагаем заказать планы эвакуации, согласно всех норм и правил ППБ РБ, в различных
-						исполнениях:</strong>
-					<ul>
-						<li><strong>формат А3 в ламинации</strong> - <span class="a3-in-lamination">39</span> бел.руб./шт.
-						</li>
-						<li><strong>формат А3 в ламинации с фотолюминесцентным
-								покрытием</strong> - <span class="a3-in-lamination-with-photolum">46</span> бел.руб./шт</li>
-						<li><strong>формат А3 ПВХ без борта</strong> - <span class="a3-PVC-without-border">59</span> бел.руб./шт.
-						</li>
-						<li><strong>формат А3 ПВХ с бортом</strong> - <span class="a3-PVC-with-border">76</span>
-							бел.руб./шт.</li>
-						<li><strong>формат А3 ПВХ без борта с фотолюминесцентным
-								покрытием</strong> - <span class="a3-PVC-without-border-with-photolum">72</span> бел.руб./шт</li>
-						<li><strong>формат А3 ПВХ с бортом с фотолюминесцентным
-								покрытием</strong> - <span class="a3-PVC-with-border-with-photolum">85</span> бел.руб./шт</li>
-						<li><strong>формат А3 ПВХ в рамке</strong> - <span class="a3-PVC-framed">110</span>
-							бел.руб./шт</li>
-					</ul>
+				<div class="block-2">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>нормативные документы</p>
+					</div>
+					<div>
+						<div class="card-img ">
+							<img src="./assets/img/form_img.jpg" alt="maket" tabindex="0">
+							<img src="./assets/img/form_img3.jpg" alt="maket" tabindex="0">
+						</div>
+						<div class="card-text">
+							<strong>Форма плана эвакуации должна соответствовать:</strong>
+							<ol>
+								<li><strong>Правилам пожарной безопасности Республики Беларусь</strong>, утвержденным Постановлением
+									Министерства по чрезвычайным ситуациям Республики Беларусь от 14.03.2014 № 3
+									(в ред. постановлений МЧС от 26.08.2014 № 25, от 01.06.2015 № 27, от 25.02.2016 № 14).<br>
+									<div class="modal-window">
+										<button class="modal-btn flaticon-pdf-file-format-symbol">посмотреть</button>
+										<div class="modal-shadow"></div>
+										<div class="modal">
+											<button class="modal-btn--close flaticon-remove"></button>
+											<object rel="preload" data="./assets/files/PravilaPB.pdf" type="application/pdf">
+											</object>
+										</div>
+									</div>
+								</li>
 
-				</div>
-			</div> <!-- block-4 -->
-			<div class="block-5">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>Образцы</p>
-				</div>
-				<div class="card-img">
-					<img src="../assets/img/maket/maket1.jpg" alt="maket1" tabindex="0">
-					<img src="../assets/img/maket/maket2.jpg" alt="maket2" tabindex="0">
-					<img src="../assets/img/maket/maket3.jpg" alt="maket3" tabindex="0">
-					<img src="../assets/img/maket/maket4.jpg" alt="maket4" tabindex="0">
-					<img src="../assets/img/maket/maket5.jpg" alt="maket5" tabindex="0">
-					<img src="../assets/img/maket/maket6.jpg" alt="maket6" tabindex="0">
-				</div>
-			</div> <!-- block-5 -->
-		</main>
+								<li><strong>Постановлению Министерства по чрезвычайным ситуациям Республики Беларусь</strong> №21 от
+									20.04.2018 "Об установлении формы плана эвакуации людей при пожаре":<br>
+									<div class="modal-window">
+										<button class="modal-btn flaticon-pdf-file-format-symbol">посмотреть</button>
+										<div class="modal-shadow"></div>
+										<div class="modal">
+											<button class="modal-btn--close flaticon-remove"></button>
+											<object rel="preload" data="./assets/files/постановление_мчс.pdf" type="application/pdf">
+											</object>
+										</div>
+									</div>
+									<ul>
+										<li><strong>План эвакуации</strong> должен состоять из графической и текстовой (инструкции) частей.
+										</li>
 
-		<aside>
-			<div class="accordeon__wrapper">
-				<div class="menu__accordeon">
-					<a class="button">заказать планы эвакуации</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop">
-						<li><a href="products.html">формат А3 в ламинации</a></li>
-						<li><a href="products.html">формат А3 в ламинации с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ без борта</a></li>
-						<li><a href="products.html">формат А3 ПВХ с бортом</a></li>
-						<li><a href="products.html">формат А3 ПВХ без борта с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ с бортом с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ в рамке</a></li>
-					</ul>
-				</div> <!-- заказать планы эвакуации -->
+										<li> План эвакуации утверждается руководителем организации.</li>
 
-				<div class="menu__accordeon">
-					<a class="button">заказать схему движения</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop brop-height">
-						<li><a href="products.html">Схема движения</a></li>
-					</ul>
-				</div> <!-- заказать схему движения -->
+										<li> На плане должны быть отображены: лестничные клетки, лифты и лифтовые холлы, жилые комнаты,
+											хозяйственно-бытовые помещения, балконы, наружные лестницы, а также двери лестничных клеток,
+											лифтовых холлов и дверей, расположенные на пути на пути эвакуации. Наименования помещений должны
+											быть обозначены непосредственно на планах этажей либо их нумеруют и проводят экспликацию
+											помещений.
+											Двери на плане должны быть показаны в открытом виде. Если при эксплуатации отдельные выходы
+											заперты,
+											на плане эвакуации дверной проём должен быть изображён закрытым, а место хранения ключей должно
+											быть
+											обозначено надписью: "Ящик с ключом от наружной двери". Если здание имеет наружную пожарную
+											лестницу, то в плане должна быть надпись: "Выход на пожарную лестницу". Основные пути эвакуации
+											показывают сплошной линией, а запасные - пунктирной. Линии путей эвакуации должны приводиться из
+											каждого помещения до выхода в безопасное место, либо непосредственно наружу. На графической части
+											указываются номера телефонов вызова пожарных аварийно-спасательных подразделений, руководителя и
+											ответственного дежурного по объекту.</li>
 
-				<!-- <div class="menu__accordeon">
+										<li> C помощью условных обозначений показывают места размещения: ручных пожарных извещателей,
+											пожарных
+											кранов, кнопок пуска системы дымоудаления, пожарных кранов, огнетушителей, телефонов для вызова
+											ПАСП, приёмно-контрольных приборов, плана эвакуации. Расшифровка условных обозначений даётся на
+											русском или белорусском языках.</li>
+
+										<li> Текстовая часть плана эвакуации должна представлять собой утверждённую руководителем объекта
+											инструкцию, выполненную в виде таблицы, содержащей порядок и перечень действий при пожаре, их
+											последовательность, должность и фамилии исполнителей.</li>
+
+										<li> Размещаются планы эвакуации на видном месте на каждом этаже у входов в лестничные клетки
+											эвакуационных выходов, в помещениях дежурного персонала.</li>
+
+									</ul>
+							</ol>
+						</div>
+
+					</div>
+				</div> <!-- block-2 -->
+
+				<div class="block-4">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>Заказать план эвакуации</p>
+					</div>
+					<div class="card-text">
+						<strong>Предлагаем заказать планы эвакуации, согласно всех норм и правил ППБ РБ, в различных
+							исполнениях:</strong>
+						<ul>
+							<li><strong>формат А3 в ламинации</strong> - <span class="a3-in-lamination">39</span> бел.руб./шт.
+							</li>
+							<li><strong>формат А3 в ламинации с фотолюминесцентным
+									покрытием</strong> - <span class="a3-in-lamination-with-photolum">46</span> бел.руб./шт</li>
+							<li><strong>формат А3 ПВХ без борта</strong> - <span class="a3-PVC-without-border">59</span> бел.руб./шт.
+							</li>
+							<li><strong>формат А3 ПВХ с бортом</strong> - <span class="a3-PVC-with-border">76</span>
+								бел.руб./шт.</li>
+							<li><strong>формат А3 ПВХ без борта с фотолюминесцентным
+									покрытием</strong> - <span class="a3-PVC-without-border-with-photolum">72</span> бел.руб./шт</li>
+							<li><strong>формат А3 ПВХ с бортом с фотолюминесцентным
+									покрытием</strong> - <span class="a3-PVC-with-border-with-photolum">85</span> бел.руб./шт</li>
+							<li><strong>формат А3 ПВХ в рамке</strong> - <span class="a3-PVC-framed">110</span>
+								бел.руб./шт</li>
+						</ul>
+
+					</div>
+				</div> <!-- block-4 -->
+				<div class="block-5">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>Образцы</p>
+					</div>
+					<div class="card-img">
+						<img src="./assets/img/maket/maket1.jpg" alt="maket1" tabindex="0">
+						<img src="./assets/img/maket/maket2.jpg" alt="maket2" tabindex="0">
+						<img src="./assets/img/maket/maket3.jpg" alt="maket3" tabindex="0">
+						<img src="./assets/img/maket/maket4.jpg" alt="maket4" tabindex="0">
+						<img src="./assets/img/maket/maket5.jpg" alt="maket5" tabindex="0">
+						<img src="./assets/img/maket/maket6.jpg" alt="maket6" tabindex="0">
+					</div>
+				</div> <!-- block-5 -->
+			</main>
+
+			<aside>
+				<div class="accordeon__wrapper">
+					<div class="menu__accordeon">
+						<a class="button">заказать планы эвакуации</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
+						<ul class="menu__accordeon-drop">
+							<li><a href="products.html">формат А3 в ламинации</a></li>
+							<li><a href="products.html">формат А3 в ламинации с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ без борта</a></li>
+							<li><a href="products.html">формат А3 ПВХ с бортом</a></li>
+							<li><a href="products.html">формат А3 ПВХ без борта с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ с бортом с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ в рамке</a></li>
+						</ul>
+					</div> <!-- заказать планы эвакуации -->
+
+					<div class="menu__accordeon">
+						<a class="button">заказать схему движения</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
+						<ul class="menu__accordeon-drop brop-height">
+							<li><a href="products.html">Схема движения</a></li>
+						</ul>
+					</div> <!-- заказать схему движения -->
+
+					<!-- <div class="menu__accordeon">
 				<a class="button">заказать пожарно-технический расчет</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
 					<ul class="menu__accordeon-drop brop-height">
 					<li><a href="products.html">Пожарно-технический расчет</a></li>
 					</ul>
 				</div> заказать пожарно технический расчет -->
-			</div>
-			<div class="contacts">
-				<p>Контакты</p>
-				<div>
-					<div class="contacts__phone-wrapper">
-						<span class="flaticon-telephone"></span>
-						<a href="tel:+375291382403" title="Телефон" target="_blank"> +375 (29) 138 24 03</a>
-					</div>
-					<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"><span
-							class="flaticon-vk-social-logotype"></span> ВКонтакте</a>
-					<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank"><span class="flaticon-email-at"></span>
-						e-mail</a>
 				</div>
-			</div>
-			<div class="schedule">
+				<div class="contacts">
+					<p>Контакты</p>
+					<div>
+						<div class="contacts__phone-wrapper">
+							<span class="flaticon-telephone"></span>
+							<a href="tel:+375291382403" title="Телефон" target="_blank"> +375 (29) 138 24 03</a>
+						</div>
+						<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"><span
+								class="flaticon-vk-social-logotype"></span> ВКонтакте</a>
+						<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank"><span class="flaticon-email-at"></span>
+							e-mail</a>
+					</div>
+				</div>
+				<div class="schedule">
 
-				<p>График работы</p>
-				<ul>
-					<li>Понедельник - с 7:00 до 23:00</li>
-					<li>Вторник - с 7:00 до 23:00</li>
-					<li>Среда - с 7:00 до 23:00</li>
-					<li>Четверг - с 7:00 до 23:00</li>
-					<li>Пятница - с 7:00 до 23:00</li>
-					<li>Суббота - с 9:00 до 19:00</li>
-					<li>Воскресенье - с 9:00 до 19:00</li>
-				</ul>
-			</div>
-		</aside>
+					<p>График работы</p>
+					<ul>
+						<li>Понедельник - с 7:00 до 23:00</li>
+						<li>Вторник - с 7:00 до 23:00</li>
+						<li>Среда - с 7:00 до 23:00</li>
+						<li>Четверг - с 7:00 до 23:00</li>
+						<li>Пятница - с 7:00 до 23:00</li>
+						<li>Суббота - с 9:00 до 19:00</li>
+						<li>Воскресенье - с 9:00 до 19:00</li>
+					</ul>
+				</div>
+			</aside>
 
-		<%= require('html-loader!./components/footer.html').default %>
+			<%= require('html-loader!./components/footer.html').default %>
 	</div>
 
-	<script type="module" defer src="../index.js"></script>
 </body>
 
 </html>

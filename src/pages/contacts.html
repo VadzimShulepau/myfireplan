@@ -5,98 +5,153 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="План эвакуации РБ. График работы компании. Контакты компании. Обратная связь.">
-	<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
-	<link rel="icon" href="../favicon.ico" type="image/x-icon" sizes="120x120">
-	<link rel="stylesheet" href="../fonts/icon/font/flaticon.css" type="text/css">
-	<link rel="stylesheet" href="../css/style.css" type="text/css">
+
 	<title>Контакты. План эвакуации РБ</title>
 </head>
 
 <body>
 	<div class="container">
 		<%= require('html-loader!./components/header.html').default %>
-		<a href="#top" class="to-top flaticon-double-chevron"></a>
-		<main class="grid-contacts">
+			<a href="#top" class="to-top flaticon-double-chevron"></a>
+			<main class="grid-contacts">
 
-			<div class="contacts-main__contacts">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>наши контакты</p>
-				</div>
-				<div class="card-text">
-					<div class="contacts-main__item">
-						<span class="flaticon-telephone"></span>
-						<a href="tel:+375447923558" title="Телефон" target="_blank"> +375(44) 792-35-58</a>
+				<div class="contacts-main__contacts">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>наши контакты</p>
 					</div>
-					<div class="contacts-main__item">
-						<span class="flaticon-vk-social-logotype"></span>
-						<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"> Мы ВКонтакте</a>
+					<div class="card-text">
+						<div class="contacts-main__item">
+							<span class="flaticon-telephone"></span>
+							<a href="tel:+375447923558" title="Телефон" target="_blank"> +375(44) 792-35-58</a>
+						</div>
+						<div class="contacts-main__item">
+							<span class="flaticon-vk-social-logotype"></span>
+							<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"> Мы ВКонтакте</a>
+						</div>
+						<div class="contacts-main__item">
+							<span class="flaticon-email-at"></span>
+							<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank">
+								Связаться по почте</a>
+						</div>
+						<p><b>Адрес:</b> <br> Минская область, Воложинский район, <br>город Воложин, ул. Партизанская, дом 14а, кв.
+							20.</p>
 					</div>
-					<div class="contacts-main__item">
-						<span class="flaticon-email-at"></span>
-						<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank">
-							Связаться по почте</a>
+				</div> <!-- contacts-main__contacts -->
+
+				<div class="feedback">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>обратная связь</p>
 					</div>
-					<p><b>Адрес:</b> <br> Минская область, Воложинский район, <br>город Воложин, ул. Партизанская, дом 14а, кв.
-						20.</p>
-				</div>
-			</div> <!-- contacts-main__contacts -->
+					<div class="card-text">
+						<form class="form" name="form" id="form">
 
-			<div class="feedback">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>обратная связь</p>
-				</div>
-				<div class="card-text">
-					<form class="form" name="form" id="form">
-
-						<div class="form-name">
-							<label for="name">Ваше имя*:</label>
-							<input type="text" name="name" id="name" form="form" placeholder="имя" required>
-						</div>
-
-						<div class="form-email">
-							<label for="email">Ваша почта*:</label>
-							<input type="email" name="email" id="email" form="form" placeholder="name@domain.com"
-								pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)" required>
-						</div>
-
-						<div class="form-tel">
-							<label for="tel">Ваш телефон*:</label>
-							<input type="tel" name="tel" id="tel" form="form" placeholder="+375 00 000 00 00"
-								pattern="\+[375]+[0-9]{9}" minlength="13" required>
-						</div>
-
-						<div class="form-message">
-							<label for="message">Сообщение*:</label>
-							<textarea name="message" id="message" form="form" placeholder="сообщение" required></textarea>
-						</div>
-
-						<div class="form-file">
-							<div class="form-file__button">
-								<div class="file__plus">+</div>
-								<input type="file" name="file[]" id="file" class="file" placeholder="" accept=".jpg,.png,.pdf,.zip,.rar"
-									multiple="multiple">
-								<div class="file-name">Добавить файл</div>
+							<div class="form-name">
+								<label for="name">Ваше имя*:</label>
+								<input type="text" name="name" id="name" form="form" placeholder="имя" required>
 							</div>
-							<!-- <div class="file-name"></div> -->
-						</div>
 
-						<div class="form-button">
-							<button type="submit" id="button" name="button" form="form">Отправить</button>
-						</div>
-					</form>
-					<!-- <div class="error"></div> -->
+							<div class="form-email">
+								<label for="email">Ваша почта*:</label>
+								<input type="email" name="email" id="email" form="form" placeholder="name@domain.com"
+									pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)" required>
+							</div>
+
+							<div class="form-tel">
+								<label for="tel">Ваш телефон*:</label>
+								<input type="tel" name="tel" id="tel" form="form" placeholder="+375 00 000 00 00"
+									pattern="\+[375]+[0-9]{9}" minlength="13" required>
+							</div>
+
+							<div class="form-message">
+								<label for="message">Сообщение*:</label>
+								<textarea name="message" id="message" form="form" placeholder="сообщение" required></textarea>
+							</div>
+
+							<div class="form-file">
+								<div class="form-file__button">
+									<div class="file__plus">+</div>
+									<input type="file" name="file[]" id="file" class="file" placeholder=""
+										accept=".jpg,.png,.pdf,.zip,.rar" multiple="multiple">
+									<div class="file-name">Добавить файл</div>
+								</div>
+								<!-- <div class="file-name"></div> -->
+							</div>
+
+							<div class="form-button">
+								<button type="submit" id="button" name="button" form="form">Отправить</button>
+							</div>
+						</form>
+						<!-- <div class="error"></div> -->
+					</div>
+				</div> <!-- feedback -->
+
+
+				<div class="schedule-main__contacts">
+					<div class="title">
+						<span class="flaticon-double-chevron"></span>
+						<p>график работы</p>
+					</div>
+					<div class="card-text">
+						<ul>
+							<li>Понедельник - с 7:00 до 23:00</li>
+							<li>Вторник - с 7:00 до 23:00</li>
+							<li>Среда - с 7:00 до 23:00</li>
+							<li>Четверг - с 7:00 до 23:00</li>
+							<li>Пятница - с 7:00 до 23:00</li>
+							<li>Суббота - с 9:00 до 19:00</li>
+							<li>Воскресенье - с 9:00 до 19:00</li>
+						</ul>
+					</div>
+				</div> <!-- schedule-main__contacts -->
+			</main>
+			<aside>
+				<div class="accordeon__wrapper">
+					<div class="menu__accordeon">
+						<a class="button">заказать планы эвакуации</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
+						<ul class="menu__accordeon-drop">
+							<li><a href="products.html">формат А3 в ламинации</a></li>
+							<li><a href="products.html">формат А3 в ламинации с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ без борта</a></li>
+							<li><a href="products.html">формат А3 ПВХ с бортом</a></li>
+							<li><a href="products.html">формат А3 ПВХ без борта с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ с бортом с фотолюминесцентным покрытием</a></li>
+							<li><a href="products.html">формат А3 ПВХ в рамке</a></li>
+						</ul>
+					</div> <!-- заказать планы эвакуации -->
+
+					<div class="menu__accordeon">
+						<a class="button">заказать схему движения</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
+						<ul class="menu__accordeon-drop brop-height">
+							<li><a href="products.html">Схема движения</a></li>
+						</ul>
+					</div> <!-- заказать схему движения -->
+
+					<!-- <div class="menu__accordeon">
+					<a class="button">заказать пожарно-технический расчет</a><span
+						class="arrow-btn flaticon-arrow-point-to-right"></span>
+					<ul class="menu__accordeon-drop brop-height">
+						<li><a href="products.html">Пожарно-технический расчет</a></li>
+					</ul>
+				</div> заказать пожарно технический расчет -->
 				</div>
-			</div> <!-- feedback -->
-
-
-			<div class="schedule-main__contacts">
-				<div class="title">
-					<span class="flaticon-double-chevron"></span>
-					<p>график работы</p>
+				<div class="contacts">
+					<p>Контакты</p>
+					<div>
+						<div class="contacts__phone-wrapper">
+							<span class="flaticon-telephone"></span>
+							<a href="tel:+375291382403" title="Телефон" target="_blank"> +375 (29) 138 24 03</a>
+						</div>
+						<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"><span
+								class="flaticon-vk-social-logotype"></span> ВКонтакте</a>
+						<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank"><span class="flaticon-email-at"></span>
+							e-mail</a>
+					</div>
 				</div>
-				<div class="card-text">
+				<div class="schedule">
+
+					<p>График работы</p>
 					<ul>
 						<li>Понедельник - с 7:00 до 23:00</li>
 						<li>Вторник - с 7:00 до 23:00</li>
@@ -107,68 +162,10 @@
 						<li>Воскресенье - с 9:00 до 19:00</li>
 					</ul>
 				</div>
-			</div> <!-- schedule-main__contacts -->
-		</main>
-		<aside>
-			<div class="accordeon__wrapper">
-				<div class="menu__accordeon">
-					<a class="button">заказать планы эвакуации</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop">
-						<li><a href="products.html">формат А3 в ламинации</a></li>
-						<li><a href="products.html">формат А3 в ламинации с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ без борта</a></li>
-						<li><a href="products.html">формат А3 ПВХ с бортом</a></li>
-						<li><a href="products.html">формат А3 ПВХ без борта с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ с бортом с фотолюминесцентным покрытием</a></li>
-						<li><a href="products.html">формат А3 ПВХ в рамке</a></li>
-					</ul>
-				</div> <!-- заказать планы эвакуации -->
-
-				<div class="menu__accordeon">
-					<a class="button">заказать схему движения</a><span class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop brop-height">
-						<li><a href="products.html">Схема движения</a></li>
-					</ul>
-				</div> <!-- заказать схему движения -->
-
-				<!-- <div class="menu__accordeon">
-					<a class="button">заказать пожарно-технический расчет</a><span
-						class="arrow-btn flaticon-arrow-point-to-right"></span>
-					<ul class="menu__accordeon-drop brop-height">
-						<li><a href="products.html">Пожарно-технический расчет</a></li>
-					</ul>
-				</div> заказать пожарно технический расчет -->
-			</div>
-			<div class="contacts">
-				<p>Контакты</p>
-				<div>
-					<div class="contacts__phone-wrapper">
-						<span class="flaticon-telephone"></span>
-						<a href="tel:+375291382403" title="Телефон" target="_blank"> +375 (29) 138 24 03</a>
-					</div>
-					<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"><span
-							class="flaticon-vk-social-logotype"></span> ВКонтакте</a>
-					<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank"><span class="flaticon-email-at"></span>
-						e-mail</a>
-				</div>
-			</div>
-			<div class="schedule">
-
-				<p>График работы</p>
-				<ul>
-					<li>Понедельник - с 7:00 до 23:00</li>
-					<li>Вторник - с 7:00 до 23:00</li>
-					<li>Среда - с 7:00 до 23:00</li>
-					<li>Четверг - с 7:00 до 23:00</li>
-					<li>Пятница - с 7:00 до 23:00</li>
-					<li>Суббота - с 9:00 до 19:00</li>
-					<li>Воскресенье - с 9:00 до 19:00</li>
-				</ul>
-			</div>
-		</aside>
-		<%= require('html-loader!./components/footer.html').default %>
+			</aside>
+			<%= require('html-loader!./components/footer.html').default %>
 	</div>
-	<script type="module" defer src="../index.js"></script>
+	<!-- <script type="module" defer src="../index.js"></script> -->
 
 </body>
 

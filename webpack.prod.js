@@ -8,37 +8,58 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
 const htmlPages = [];
-fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file));
-
-const cssLoaderOptions = {
-    esModule: true,
-    modules: {
-      mode: "global",
-      exportGlobals: true,
-      namedExport: true,
-      exportLocalsConvention: 'dashesOnly',
-      exportOnlyLocals: false,
+fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file.name));
+// console.log(htmlPages)
+const htmlPagesWithPlugin = htmlPages.map((page) => {
+  return new HtmlWebpackPlugin({
+    inject: 'body',
+    filename: page,
+    template: path.resolve(htmlPagesDirectory, page),
+    favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true,
     },
-  };
+  })
+})
+// console.log(htmlPages)
+const cssLoaderOptions = {
+  esModule: true,
+  modules: {
+    mode: "global",
+    exportGlobals: true,
+    namedExport: true,
+    exportLocalsConvention: 'dashesOnly',
+    exportOnlyLocals: false,
+  },
+};
 
 const copyPluginPatterns = [
-    {
-      from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-      to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-    },
-    {
-      from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-      to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-    },
-    {
-      from: path.resolve(__dirname, './src/assets/adjustment/'),
-      to: path.resolve(__dirname, './dist/assets/adjustment/'),
-    },
-    {
-      from: path.resolve(__dirname, './src/assets/img/maket'),
-      to: path.resolve(__dirname, './dist/assets/img/maket'),
-    },
-  ];
+  {
+    from: path.resolve(__dirname, './src/assets/img/dominos.png'),
+    to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
+    to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/adjustment/'),
+    to: path.resolve(__dirname, './dist/assets/adjustment/'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/img/maket'),
+    to: path.resolve(__dirname, './dist/assets/img/maket'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/files'),
+    to: path.resolve(__dirname, './dist/assets/files'),
+  },
+  {
+    from: path.resolve(__dirname, './src/assets/certificates'),
+    to: path.resolve(__dirname, './dist/assets/certificates'),
+  },
+];
 
 const optimize = () => {
   return {
@@ -85,11 +106,13 @@ module.exports = {
       filename: 'index.html',
       template: path.resolve(__dirname, 'src', 'index.html'),
       favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
+      scriptLoading: 'defer',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
       }
     }),
+    ...htmlPagesWithPlugin,
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css',
@@ -120,7 +143,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpg|jpeg|svg|gif|pdf)$/i,
+        test: /\.(png|jpg|jpeg|svg|gif|webp)$/i,
         use: [
           {
             loader: 'image-webpack-loader',
