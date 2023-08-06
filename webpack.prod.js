@@ -4,29 +4,43 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+// const CopyPlugin = require("copy-webpack-plugin");
 
 const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
+const htmlComponentsDirectory = path.resolve(__dirname, 'src', 'pages', 'components');
 const htmlPages = [];
+const htmlComponents = [];
+
 fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file.name));
-// console.log(htmlPages)
+fs.readdirSync(htmlComponentsDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlComponents.push(file.name));
+
 const htmlPagesWithPlugin = htmlPages.map((page) => {
   return new HtmlWebpackPlugin({
     inject: 'body',
     filename: page,
     template: path.resolve(htmlPagesDirectory, page),
     favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
+    scriptLoading: 'defer',
     minify: {
       collapseWhitespace: true,
       removeComments: true,
     },
-  })
-})
-// console.log(htmlPages)
+  });
+});
+
+const htmlComponentsWithPlugin = htmlComponents.map((component) => {
+  return new HtmlWebpackPartialsPlugin({
+    path: path.resolve(__dirname, 'src', 'pages', 'components', component),
+    location: component.split('.')[0].trim(),
+    template_filename: ['index.html', ...htmlPages],
+  });
+});
+
 const cssLoaderOptions = {
   esModule: true,
   modules: {
-    mode: "global",
+    mode: 'global',
     exportGlobals: true,
     namedExport: true,
     exportLocalsConvention: 'dashesOnly',
@@ -75,10 +89,10 @@ const copyPluginPatterns = [
   //   from: path.resolve(__dirname, './src/assets/img/form_img3.jpg'),
   //   to: path.resolve(__dirname, './dist/assets/img/form_img3.jpg'),
   // },
-  {
-    from: path.resolve(__dirname, './src/assets'),
-    to: path.resolve(__dirname, './dist/assets'),
-  },
+  // {
+  //   from: path.resolve(__dirname, './src/assets'),
+  //   to: path.resolve(__dirname, './dist/assets'),
+  // },
 ];
 
 const optimize = () => {
@@ -112,13 +126,27 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // assetModuleFilename: './assets/[name].[hash][ext]',
-    // publicPath: 'dist',
+    // publicPath: './',
+    assetModuleFilename: (data) => {
+      // return './assets/' + data.filename.split('/').slice(1).join('/');
+      const assetPath = path.dirname(data.filename).split('/').slice(1).join('/'); //folder path
+      return `${assetPath}/[name].[contenthash][ext]`;
+    },
   },
   resolve: {
-    extensions: ['.js', '.json', '.css'],
+    extensions: ['.js', '.json', '.css', '.html', '.png', '.pdf', '.webp', '.svg', '.jpg'],
+    // alias: {
+    //   '@images': path.resolve(__dirname, 'src', 'assets', 'img'),
+    //   '@fonts': path.resolve(__dirname, 'src', 'assets', 'fonts'),
+    //   '@files': path.resolve(__dirname, 'src', 'assets', 'files'),
+    //   '@adjustment': path.resolve(__dirname, 'src', 'assets', 'adjustment'),
+    //   '@certificates': path.resolve(__dirname, 'src', 'assets', 'certificates'),
+    // },
   },
   devtool: false,
+  stats: {
+    children: true,
+  },
   optimization: optimize(),
   plugins: [
     new HtmlWebpackPlugin({
@@ -133,16 +161,21 @@ module.exports = {
       }
     }),
     ...htmlPagesWithPlugin,
+    ...htmlComponentsWithPlugin,
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css',
     }),
-    new CopyPlugin({
-      patterns: copyPluginPatterns,
-    }),
+    // new CopyPlugin({
+    //   patterns: copyPluginPatterns,
+    // }),
   ],
   module: {
     rules: [
+      {
+        test: /\.html$/i,
+        use: ['html-loader'],
+      },
       {
         test: /\.css$/i,
         use: [
@@ -150,7 +183,7 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: cssLoaderOptions,
           },
         ],
@@ -201,9 +234,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
+              ['@babel/preset-env', { targets: 'defaults' }],
             ],
-            plugins: ['@babel/plugin-proposal-class-properties']
+            plugins: ['@babel/plugin-proposal-class-properties'],
           },
         },
       },

@@ -3,7 +3,7 @@ import mainFunc from './js/main.js';
 import swiper from './js/swiper.js';
 import * as styles from './css/style.css';
 import * as flatIcons from './assets/fonts/icon/font/flaticon.css';
-import './css/swiper-bundle.min.css';
+import * as swiperStyles from'./css/swiper-bundle.min.css';
 
 dataAndPrices();
 mainFunc();

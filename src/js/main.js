@@ -191,7 +191,7 @@ export default function mainFunc() {
 
     for (let navLink of navLinks) {
       const navLinkA = navLink.querySelector('a').href.split('/').at(-1);
-      (navLinkA === currentLink ) && navLink.classList.add('nav__button-active');
+      (navLinkA === currentLink) && navLink.classList.add('nav__button-active');
       (navLink.classList.contains('services__button')) && ((currentLink === 'evacuation_plan.html') || (currentLink === 'products.html')) && navLink.classList.add('nav__button-active');
     };
   };

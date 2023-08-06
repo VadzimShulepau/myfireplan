@@ -5,7 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const cssLoaderOptions = {
   esModule: true,
   modules: {
-    mode: "global",
+    mode: 'global',
     exportGlobals: true,
     namedExport: true,
     exportLocalsConvention: 'dashesOnly',
@@ -133,7 +133,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
+              ['@babel/preset-env', { targets: 'defaults' }]
             ],
             plugins: ['@babel/plugin-proposal-class-properties']
           },
