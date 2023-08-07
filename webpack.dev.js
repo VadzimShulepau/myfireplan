@@ -1,6 +1,37 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+
+const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
+const htmlComponentsDirectory = path.resolve(__dirname, 'src', 'pages', 'components');
+const htmlPages = [];
+const htmlComponents = [];
+
+fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file.name));
+fs.readdirSync(htmlComponentsDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlComponents.push(file.name));
+
+const htmlPagesWithPlugin = htmlPages.map((page) => {
+  return new HtmlWebpackPlugin({
+    inject: 'body',
+    filename: page,
+    template: path.resolve(htmlPagesDirectory, page),
+    favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
+    scriptLoading: 'defer',
+    minify: {
+      collapseWhitespace: false,
+      removeComments: false,
+    },
+  });
+});
+
+const htmlComponentsWithPlugin = htmlComponents.map((component) => {
+  return new HtmlWebpackPartialsPlugin({
+    path: path.resolve(__dirname, 'src', 'pages', 'components', component),
+    location: component.split('.')[0].trim(),
+    template_filename: ['index.html', ...htmlPages],
+  });
+});
 
 const cssLoaderOptions = {
   esModule: true,
@@ -13,99 +44,73 @@ const cssLoaderOptions = {
   },
 };
 
-const copyPluginPatterns = [
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-  //   to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-  //   to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/adjustment'),
-  //   to: path.resolve(__dirname, './dist/assets/adjustment'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/maket'),
-  //   to: path.resolve(__dirname, './dist/assets/img/maket'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/files'),
-  //   to: path.resolve(__dirname, './dist/assets/files'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/certificates'),
-  //   to: path.resolve(__dirname, './dist/assets/certificates'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/category_sprite.webp'),
-  //   to: path.resolve(__dirname, './dist/assets/img/category_sprite.webp'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/class_z.webp'),
-  //   to: path.resolve(__dirname, './dist/assets/img/class_z.webp'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/form_img.jpg'),
-  //   to: path.resolve(__dirname, './dist/assets/img/form_img.jpg'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/form_img3.jpg'),
-  //   to: path.resolve(__dirname, './dist/assets/img/form_img3.jpg'),
-  // },
-  {
-    from: path.resolve(__dirname, './src/assets'),
-    to: path.resolve(__dirname, './dist/assets'),
-  },
-];
-
 const devServer = {
   static: {
     directory: path.resolve(__dirname, 'dist'),
   },
   port: 3000,
-  hot: true,
-  compress: true,
   open: true,
+  liveReload: true,
+  compress: true,
+  client: {
+    overlay: {
+      errors: true,
+      warnings: false,
+      runtimeErrors: true,
+    },
+  },
 };
 
 module.exports = {
   mode: 'development',
-  watch: true,
+  devServer,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    assetModuleFilename: (data) => {
+      const assetPath = path.dirname(data.filename).split('/').slice(1).join('/'); //folder path
+      return `${assetPath}/[name].[contenthash][ext]`;
+    },
   },
   resolve: {
-    extensions: ['.js', '.json', '.css'],
+    extensions: ['.js', '.json', '.css', '.html', '.png', '.pdf', '.webp', '.svg', '.jpg'],
   },
-  devServer,
   devtool: 'source-map',
+  stats: {
+    children: true,
+  },
+  optimization: {},
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
       template: path.resolve(__dirname, 'src', 'index.html'),
       favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
+      scriptLoading: 'defer',
       minify: {
-        collapseWhitespace: false,
-        removeComments: false,
+        collapseWhitespace: true,
+        removeComments: true,
       }
     }),
-    new CopyPlugin({
-      patterns: copyPluginPatterns,
-    }),
+    ...htmlPagesWithPlugin,
+    ...htmlComponentsWithPlugin,
   ],
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        use: ['html-loader'],
+      },
+      {
         test: /\.css$/i,
-        use: ['style-loader',
+        use: [
+          {
+            loader: 'style-loader',
+          },
           {
             loader: 'css-loader',
             options: cssLoaderOptions,
@@ -115,16 +120,10 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf)$/i,
         type: 'asset/resource',
-        // generator: {
-        //   filename: './assets/fonts/[name][ext]',
-        // },
       },
       {
         test: /\.(png|jpg|jpeg|svg|gif|webp)$/i,
         type: 'asset/resource',
-        // generator: {
-        //   filename: './assets/img/[name][ext]',
-        // },
       },
       {
         test: /\.js$/i,
@@ -133,9 +132,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: 'defaults' }]
+              ['@babel/preset-env', { targets: 'defaults' }],
             ],
-            plugins: ['@babel/plugin-proposal-class-properties']
+            plugins: ['@babel/plugin-proposal-class-properties'],
           },
         },
       },
