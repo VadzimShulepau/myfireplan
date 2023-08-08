@@ -195,5 +195,5 @@ export default function mainFunc() {
       (navLink.classList.contains('services__button')) && ((currentLink === 'evacuation_plan.html') || (currentLink === 'products.html')) && navLink.classList.add('nav__button-active');
     };
   };
-  toggleNavLink();
+  window.addEventListener('load', toggleNavLink);
 };

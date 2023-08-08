@@ -1,41 +1,10 @@
 const path = require('path');
-const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
-// const CopyPlugin = require("copy-webpack-plugin");
+const { htmlPagesWithPlugin, htmlComponentsWithPlugin } = require('./webpack.pages');
 
-const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
-const htmlComponentsDirectory = path.resolve(__dirname, 'src', 'pages', 'components');
-const htmlPages = [];
-const htmlComponents = [];
-
-fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file.name));
-fs.readdirSync(htmlComponentsDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlComponents.push(file.name));
-
-const htmlPagesWithPlugin = htmlPages.map((page) => {
-  return new HtmlWebpackPlugin({
-    inject: 'body',
-    filename: page,
-    template: path.resolve(htmlPagesDirectory, page),
-    favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-    scriptLoading: 'defer',
-    minify: {
-      collapseWhitespace: true,
-      removeComments: true,
-    },
-  });
-});
-
-const htmlComponentsWithPlugin = htmlComponents.map((component) => {
-  return new HtmlWebpackPartialsPlugin({
-    path: path.resolve(__dirname, 'src', 'pages', 'components', component),
-    location: component.split('.')[0].trim(),
-    template_filename: ['index.html', ...htmlPages],
-  });
-});
 
 const cssLoaderOptions = {
   esModule: true,
@@ -47,53 +16,6 @@ const cssLoaderOptions = {
     exportOnlyLocals: false,
   },
 };
-
-const copyPluginPatterns = [
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/dominos.png'),
-  //   to: path.resolve(__dirname, './dist/assets/img/dominos.png'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/sosedi.png'),
-  //   to: path.resolve(__dirname, './dist/assets/img/sosedi.png'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/adjustment'),
-  //   to: path.resolve(__dirname, './dist/assets/adjustment'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/maket'),
-  //   to: path.resolve(__dirname, './dist/assets/img/maket'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/files'),
-  //   to: path.resolve(__dirname, './dist/assets/files'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/certificates'),
-  //   to: path.resolve(__dirname, './dist/assets/certificates'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/category_sprite.webp'),
-  //   to: path.resolve(__dirname, './dist/assets/img/category_sprite.webp'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/class_z.webp'),
-  //   to: path.resolve(__dirname, './dist/assets/img/class_z.webp'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/form_img.jpg'),
-  //   to: path.resolve(__dirname, './dist/assets/img/form_img.jpg'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets/img/form_img3.jpg'),
-  //   to: path.resolve(__dirname, './dist/assets/img/form_img3.jpg'),
-  // },
-  // {
-  //   from: path.resolve(__dirname, './src/assets'),
-  //   to: path.resolve(__dirname, './dist/assets'),
-  // },
-];
 
 const optimize = () => {
   return {
@@ -126,22 +48,13 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // publicPath: './',
     assetModuleFilename: (data) => {
-      // return './assets/' + data.filename.split('/').slice(1).join('/');
       const assetPath = path.dirname(data.filename).split('/').slice(1).join('/'); //folder path
       return `${assetPath}/[name].[contenthash][ext]`;
     },
   },
   resolve: {
     extensions: ['.js', '.json', '.css', '.html', '.png', '.pdf', '.webp', '.svg', '.jpg'],
-    // alias: {
-    //   '@images': path.resolve(__dirname, 'src', 'assets', 'img'),
-    //   '@fonts': path.resolve(__dirname, 'src', 'assets', 'fonts'),
-    //   '@files': path.resolve(__dirname, 'src', 'assets', 'files'),
-    //   '@adjustment': path.resolve(__dirname, 'src', 'assets', 'adjustment'),
-    //   '@certificates': path.resolve(__dirname, 'src', 'assets', 'certificates'),
-    // },
   },
   devtool: false,
   stats: {
@@ -166,9 +79,6 @@ module.exports = {
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css',
     }),
-    // new CopyPlugin({
-    //   patterns: copyPluginPatterns,
-    // }),
   ],
   module: {
     rules: [
@@ -191,9 +101,6 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf)$/i,
         type: 'asset/resource',
-        // generator: {
-        //   filename: './assets/fonts/[name][ext]',
-        // },
       },
       {
         test: /\.(png|jpg|jpeg|svg|gif|webp)$/i,
@@ -204,7 +111,6 @@ module.exports = {
               mozjpeg: {
                 progressive: true,
               },
-              // optipng.enabled: false will disable optipng
               optipng: {
                 enabled: false,
               },
@@ -215,7 +121,6 @@ module.exports = {
               gifsicle: {
                 interlaced: false,
               },
-              // the webp option will enable WEBP
               webp: {
                 quality: 75
               }
@@ -223,9 +128,6 @@ module.exports = {
           },
         ],
         type: 'asset/resource',
-        // generator: {
-        //   filename: './assets/img/[name][ext]',
-        // },
       },
       {
         test: /\.js$/i,

@@ -9,7 +9,4 @@ dataAndPrices();
 mainFunc();
 
 const slide = document.querySelector('.' + styles.slider);
-// console.log(styles.slider)
 slide ? swiper() : null;
-// console.log(styles)
-// console.log(styles.container)

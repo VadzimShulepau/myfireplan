@@ -1,37 +1,7 @@
 const path = require('path');
-const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+const { htmlPagesWithPlugin, htmlComponentsWithPlugin } = require('./webpack.pages');
 
-const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
-const htmlComponentsDirectory = path.resolve(__dirname, 'src', 'pages', 'components');
-const htmlPages = [];
-const htmlComponents = [];
-
-fs.readdirSync(htmlPagesDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlPages.push(file.name));
-fs.readdirSync(htmlComponentsDirectory, { withFileTypes: true }).map((file) => file.isFile() && htmlComponents.push(file.name));
-
-const htmlPagesWithPlugin = htmlPages.map((page) => {
-  return new HtmlWebpackPlugin({
-    inject: 'body',
-    filename: page,
-    template: path.resolve(htmlPagesDirectory, page),
-    favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
-    scriptLoading: 'defer',
-    minify: {
-      collapseWhitespace: false,
-      removeComments: false,
-    },
-  });
-});
-
-const htmlComponentsWithPlugin = htmlComponents.map((component) => {
-  return new HtmlWebpackPartialsPlugin({
-    path: path.resolve(__dirname, 'src', 'pages', 'components', component),
-    location: component.split('.')[0].trim(),
-    template_filename: ['index.html', ...htmlPages],
-  });
-});
 
 const cssLoaderOptions = {
   esModule: true,
@@ -49,9 +19,10 @@ const devServer = {
     directory: path.resolve(__dirname, 'dist'),
   },
   port: 3000,
-  open: true,
-  liveReload: true,
+  // open: true,
+  open: ['index.html'],
   compress: true,
+  hot: true,
   client: {
     overlay: {
       errors: true,
@@ -63,7 +34,6 @@ const devServer = {
 
 module.exports = {
   mode: 'development',
-  devServer,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   },
@@ -79,11 +49,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css', '.html', '.png', '.pdf', '.webp', '.svg', '.jpg'],
   },
+  devServer,
   devtool: 'source-map',
   stats: {
     children: true,
   },
-  optimization: {},
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
@@ -92,8 +62,8 @@ module.exports = {
       favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
       scriptLoading: 'defer',
       minify: {
-        collapseWhitespace: true,
-        removeComments: true,
+        collapseWhitespace: false,
+        removeComments: false,
       }
     }),
     ...htmlPagesWithPlugin,
