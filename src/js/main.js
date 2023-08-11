@@ -81,10 +81,10 @@ export default function mainFunc() {
 
   function menuDrop() {
     const menuBr = document.querySelector('.menu__burger');
-    const navbBtn = document.querySelector('.nav__button');
-    const servisesBtn = document.querySelector('.services__button');
-    servisesBtn.addEventListener('click', function (servisesBtn) {
-      servisesBtn.preventDefault();
+    const navBtn = document.querySelector('.nav__button');
+    const servicesBtn = document.querySelector('.services__button');
+    servicesBtn.addEventListener('click', function (servicesBtn) {
+      servicesBtn.preventDefault();
     });
     const dropMenu = document.querySelector('.button-drop');
     dropMenu.addEventListener('click', function (dropMenu) {
@@ -93,7 +93,7 @@ export default function mainFunc() {
     menuBr.addEventListener('click', function (e) {
       e.preventDefault();
       menuBr.classList.toggle('open__menu');
-      navbBtn.classList.toggle('nav__hidden');
+      navBtn.classList.toggle('nav__hidden');
     });
     // console.log('drop-menu')
   };
