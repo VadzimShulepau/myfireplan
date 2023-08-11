@@ -36,4 +36,4 @@ const htmlComponentsWithPlugin = htmlComponents.map((component) => {
 module.exports = {
   htmlPagesWithPlugin,
   htmlComponentsWithPlugin,
-}
+};

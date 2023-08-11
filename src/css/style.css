@@ -946,9 +946,9 @@ aside .schedule p {
 }
 
 aside .contacts div {
-  justify-content: start;
-  align-self: start;
   display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
   flex-direction: column;
   width: 100%;
 }
@@ -1592,7 +1592,7 @@ img {
 
 .fire__block-3 .card-pdf {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: stretch;
   flex-direction: column;
   width: 30%;
@@ -2535,9 +2535,9 @@ footer {
 }
 
 .contacts div {
-  justify-content: start;
-  align-self: start;
   display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
   flex-direction: column;
   width: 100%;
 }
@@ -2548,9 +2548,9 @@ footer {
 }
 
 .schedule > ul {
-  align-self: start;
-  justify-content: start;
   display: flex;
+  align-self: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   list-style-type: none;
@@ -2564,12 +2564,12 @@ footer {
 }
 
 .map div {
-  align-self: start;
-  justify-content: start;
   display: flex;
+  align-self: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
   width: 100%;
   max-height: 140px;
 }
