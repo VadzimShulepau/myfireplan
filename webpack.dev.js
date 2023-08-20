@@ -1,7 +1,13 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { htmlPagesWithPlugin, htmlComponentsWithPlugin } = require('./webpack.pages');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { htmlPagesWithPlugin, htmlComponentsWithPlugin } from './webpack.pages.js';
+import url from 'url';
+import 'dotenv/config';
+const __filename = url.fileURLToPath(import.meta.url); //path to js file
+const __dirname = path.dirname(__filename); // pth to js folder
+// import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
 
+const { SERVER_PORT, EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_PASSWORD } = process.env;
 
 const cssLoaderOptions = {
   esModule: true,
@@ -18,21 +24,15 @@ const devServer = {
   static: {
     directory: path.resolve(__dirname, 'dist'),
   },
-  port: 3000,
+  port: SERVER_PORT,
   // open: true,
   open: ['index.html'],
   compress: true,
   hot: true,
-  client: {
-    overlay: {
-      errors: true,
-      warnings: false,
-      runtimeErrors: true,
-    },
-  },
+  // historyApiFallback: true,
 };
 
-module.exports = {
+export default {
   mode: 'development',
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
@@ -47,7 +47,7 @@ module.exports = {
     },
   },
   resolve: {
-    extensions: ['.js', '.json', '.css', '.html', '.png', '.pdf', '.webp', '.svg', '.jpg'],
+    extensions: ['.js', '.css'],
   },
   devServer,
   devtool: 'source-map',
@@ -55,6 +55,7 @@ module.exports = {
     children: true,
   },
   plugins: [
+    // new NodePolyfillPlugin(),
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',
@@ -97,12 +98,12 @@ module.exports = {
       },
       {
         test: /\.js$/i,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: 'defaults' }],
+              ['@babel/preset-env'],
             ],
             plugins: ['@babel/plugin-proposal-class-properties'],
           },

@@ -12,105 +12,101 @@
 <body>
 	<div class="container">
 		<header></header>
-			<a href="#top" class="to-top flaticon-double-chevron"></a>
-			<main class="grid-contacts">
+		<a href="#top" class="to-top flaticon-double-chevron"></a>
+		<main class="grid-contacts">
 
-				<div class="contacts-main__contacts">
-					<div class="title">
-						<span class="flaticon-double-chevron"></span>
-						<p>наши контакты</p>
+			<div class="contacts-main__contacts">
+				<div class="title">
+					<span class="flaticon-double-chevron"></span>
+					<p>наши контакты</p>
+				</div>
+				<div class="card-text">
+					<div class="contacts-main__item">
+						<span class="flaticon-telephone"></span>
+						<a href="tel:+375447923558" title="Телефон" target="_blank"> +375(44) 792-35-58</a>
 					</div>
-					<div class="card-text">
-						<div class="contacts-main__item">
-							<span class="flaticon-telephone"></span>
-							<a href="tel:+375447923558" title="Телефон" target="_blank"> +375(44) 792-35-58</a>
+					<div class="contacts-main__item">
+						<span class="flaticon-vk-social-logotype"></span>
+						<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"> Мы ВКонтакте</a>
+					</div>
+					<div class="contacts-main__item">
+						<span class="flaticon-email-at"></span>
+						<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank">
+							Связаться по почте</a>
+					</div>
+					<p><b>Адрес:</b> <br> Минская область, Воложинский район, <br>город Воложин, ул. Партизанская, дом 14а, кв.
+						20.</p>
+				</div>
+			</div> <!-- contacts-main__contacts -->
+
+			<div class="feedback">
+				<div class="title">
+					<span class="flaticon-double-chevron"></span>
+					<p>обратная связь</p>
+				</div>
+				<div class="card-text">
+					<form class="form" name="form" id="form" >
+						<div class="form-name">
+							<label for="name">Ваше имя*:</label>
+							<input type="text" name="name" id="name" form="form" placeholder="имя" required>
 						</div>
-						<div class="contacts-main__item">
-							<span class="flaticon-vk-social-logotype"></span>
-							<a href="https://vk.com/myfire_plan" title="ВКонтакте" target="_blank"> Мы ВКонтакте</a>
+
+						<div class="form-email">
+							<label for="email">Ваша почта*:</label>
+							<input type="email" name="email" id="email" form="form" placeholder="name@domain.com"
+								pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)" required>
 						</div>
-						<div class="contacts-main__item">
-							<span class="flaticon-email-at"></span>
-							<a href="mailto:infopb101@gmail.com" title="Почта" target="_blank">
-								Связаться по почте</a>
+
+						<div class="form-tel">
+							<label for="tel">Ваш телефон*:</label>
+							<input type="tel" name="tel" id="tel" form="form" placeholder="+375 00 000 00 00"
+								pattern="\+[375]+[0-9]{9}" minlength="13" required>
 						</div>
-						<p><b>Адрес:</b> <br> Минская область, Воложинский район, <br>город Воложин, ул. Партизанская, дом 14а, кв.
-							20.</p>
-					</div>
-				</div> <!-- contacts-main__contacts -->
 
-				<div class="feedback">
-					<div class="title">
-						<span class="flaticon-double-chevron"></span>
-						<p>обратная связь</p>
-					</div>
-					<div class="card-text">
-						<form class="form" name="form" id="form">
+						<div class="form-message">
+							<label for="message">Сообщение*:</label>
+							<textarea name="message" id="message" form="form" placeholder="сообщение" required></textarea>
+						</div>
 
-							<div class="form-name">
-								<label for="name">Ваше имя*:</label>
-								<input type="text" name="name" id="name" form="form" placeholder="имя" required>
+						<div class="form-file">
+							<div class="form-file__button">
+								<div class="file__plus">+</div>
+								<input type="file" name="file[]" id="file" class="file" accept=".jpg,.png,.pdf,.zip,.rar" multiple>
+								<div class="file-name">Добавить файл</div>
 							</div>
+						</div>
 
-							<div class="form-email">
-								<label for="email">Ваша почта*:</label>
-								<input type="email" name="email" id="email" form="form" placeholder="name@domain.com"
-									pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)" required>
-							</div>
-
-							<div class="form-tel">
-								<label for="tel">Ваш телефон*:</label>
-								<input type="tel" name="tel" id="tel" form="form" placeholder="+375 00 000 00 00"
-									pattern="\+[375]+[0-9]{9}" minlength="13" required>
-							</div>
-
-							<div class="form-message">
-								<label for="message">Сообщение*:</label>
-								<textarea name="message" id="message" form="form" placeholder="сообщение" required></textarea>
-							</div>
-
-							<div class="form-file">
-								<div class="form-file__button">
-									<div class="file__plus">+</div>
-									<input type="file" name="file[]" id="file" class="file"
-										accept=".jpg,.png,.pdf,.zip,.rar" multiple="multiple">
-									<div class="file-name">Добавить файл</div>
-								</div>
-								<!-- <div class="file-name"></div> -->
-							</div>
-
-							<div class="form-button">
-								<button type="submit" id="button" name="button" form="form">Отправить</button>
-							</div>
-						</form>
-						<!-- <div class="error"></div> -->
-					</div>
-				</div> <!-- feedback -->
+						<div class="form-button">
+							<button type="submit" id="submit-button" name="button" form="form">Отправить</button>
+						</div>
+					</form>
+					<!-- <div class="error"></div> -->
+				</div>
+			</div> <!-- feedback -->
 
 
-				<div class="schedule-main__contacts">
-					<div class="title">
-						<span class="flaticon-double-chevron"></span>
-						<p>график работы</p>
-					</div>
-					<div class="card-text">
-						<ul>
-							<li>Понедельник - с 7:00 до 23:00</li>
-							<li>Вторник - с 7:00 до 23:00</li>
-							<li>Среда - с 7:00 до 23:00</li>
-							<li>Четверг - с 7:00 до 23:00</li>
-							<li>Пятница - с 7:00 до 23:00</li>
-							<li>Суббота - с 9:00 до 19:00</li>
-							<li>Воскресенье - с 9:00 до 19:00</li>
-						</ul>
-					</div>
-				</div> <!-- schedule-main__contacts -->
-			</main>
-			<aside></aside>
-			<footer></footer>
+			<div class="schedule-main__contacts">
+				<div class="title">
+					<span class="flaticon-double-chevron"></span>
+					<p>график работы</p>
+				</div>
+				<div class="card-text">
+					<ul>
+						<li>Понедельник - с 7:00 до 23:00</li>
+						<li>Вторник - с 7:00 до 23:00</li>
+						<li>Среда - с 7:00 до 23:00</li>
+						<li>Четверг - с 7:00 до 23:00</li>
+						<li>Пятница - с 7:00 до 23:00</li>
+						<li>Суббота - с 9:00 до 19:00</li>
+						<li>Воскресенье - с 9:00 до 19:00</li>
+					</ul>
+				</div>
+			</div> <!-- schedule-main__contacts -->
+		</main>
+		<aside></aside>
+		<footer></footer>
 	</div>
 	<!-- <script type="module" defer src="../index.js"></script> -->
-
 </body>
 
 </html>

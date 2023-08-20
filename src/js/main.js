@@ -134,56 +134,6 @@ export default function mainFunc() {
   };
   setInterval(date, 1000);
 
-  function fileView() {
-    const formFile = document.querySelector('.form-file');
-    if (formFile) {
-      function filePlus() {
-        const filePlus = document.querySelector('.file__plus');
-        filePlus.addEventListener('click', function () {
-          const formFile = document.querySelector('.form-file');
-          let formFileNext = formFile.cloneNode(true);
-          let fileMinus = document.createElement('div');
-          fileMinus.className = 'file__minus';
-          fileMinus.innerHTML = '-';
-          formFileNext.querySelector('.file__plus').replaceWith(fileMinus);
-          formFile.after(formFileNext);
-          let name = formFileNext.querySelector('.file-name');
-          name.innerText = 'Добавить файл';
-          fileMinus.addEventListener('click', function () {
-            formFileNext.remove();
-          });
-          fileChange();
-        });
-      };
-      filePlus();
-
-      function fileChange() {
-        const formFiles = document.querySelectorAll('.form-file');
-        for (let formFile of formFiles) {
-          formFile.addEventListener('change', function () {
-            let fileInput = formFile.querySelector('.file');
-            let files = fileInput.files;
-            let name = formFile.querySelector('.file-name');
-            if (files.length > 0) {
-              name.innerText = 'Добавлено файлов: ' + files.length;
-            } else {
-              name.innerText = 'Добавить файл';
-            };
-          });
-        };
-      };
-      fileChange();
-
-      const forms = document.querySelectorAll('.form');
-      forms.forEach(function (form) {
-        form.addEventListener('submit', function () {
-          form.classList.add('sending');
-        });
-      });
-    };
-  };
-  fileView();
-
   function toggleNavLink() {
     const currentLink = location.pathname.split('/').at(-1);
     const navLinks = document.querySelectorAll('nav li');

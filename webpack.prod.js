@@ -1,9 +1,12 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
-const { htmlPagesWithPlugin, htmlComponentsWithPlugin } = require('./webpack.pages');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import TerserWebpackPlugin from "terser-webpack-plugin";
+import { htmlPagesWithPlugin, htmlComponentsWithPlugin } from './webpack.pages.js';
+import url from 'url';
+const __filename = url.fileURLToPath(import.meta.url); //path to js file
+const __dirname = path.dirname(__filename); // pth to js folder
 
 
 const cssLoaderOptions = {
@@ -39,7 +42,7 @@ const optimize = () => {
   };
 };
 
-module.exports = {
+export default {
   mode: 'production',
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
@@ -84,7 +87,17 @@ module.exports = {
     rules: [
       {
         test: /\.html$/i,
-        use: ['html-loader'],
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: {
+                removeComments: true,
+                collapseWhitespace: true,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,

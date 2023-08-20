@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+// const  NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 // const CopyPlugin = require("copy-webpack-plugin");
 
 const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
@@ -142,6 +143,15 @@ module.exports = {
     //   '@adjustment': path.resolve(__dirname, 'src', 'assets', 'adjustment'),
     //   '@certificates': path.resolve(__dirname, 'src', 'assets', 'certificates'),
     // },
+        // fallback: {
+    //   crypto: require('crypto-browserify'),
+    //   os: require('os-browserify/browser'),
+    //   stream: require('stream-browserify'),
+    //   fs: false,
+    //   net: false,
+    //   tls: false,
+    // },
+    // modules: [path.resolve(__dirname), 'node_modules'],
   },
   devtool: false,
   stats: {
@@ -149,6 +159,7 @@ module.exports = {
   },
   optimization: optimize(),
   plugins: [
+
     new HtmlWebpackPlugin({
       inject: 'body',
       filename: 'index.html',

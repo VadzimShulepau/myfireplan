@@ -1,7 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPartialsPlugin = require('html-webpack-partials-plugin');
+import fs from'fs';
+import path from'path';
+import HtmlWebpackPlugin from'html-webpack-plugin';
+import HtmlWebpackPartialsPlugin from'html-webpack-partials-plugin';
+import url from 'url';
+const __filename = url.fileURLToPath(import.meta.url); //path to js file
+const __dirname = path.dirname(__filename); // pth to js folder
 
 const htmlPagesDirectory = path.resolve(__dirname, 'src', 'pages');
 const htmlComponentsDirectory = path.resolve(__dirname, 'src', 'pages', 'components');
@@ -18,10 +21,6 @@ const htmlPagesWithPlugin = htmlPages.map((page) => {
     template: path.resolve(htmlPagesDirectory, page),
     favicon: path.resolve(__dirname, 'src', 'favicon.ico'),
     scriptLoading: 'defer',
-    minify: {
-      collapseWhitespace: true,
-      removeComments: true,
-    },
   });
 });
 
@@ -33,7 +32,7 @@ const htmlComponentsWithPlugin = htmlComponents.map((component) => {
   });
 });
 
-module.exports = {
+export {
   htmlPagesWithPlugin,
   htmlComponentsWithPlugin,
 };
