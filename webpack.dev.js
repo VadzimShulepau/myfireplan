@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { htmlPagesWithPlugin, htmlComponentsWithPlugin } from './webpack.pages.js';
 import url from 'url';
 import 'dotenv/config';
+
 const __filename = url.fileURLToPath(import.meta.url); //path to js file
 const __dirname = path.dirname(__filename); // pth to js folder
 // import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
@@ -34,6 +35,7 @@ const devServer = {
 
 export default {
   mode: 'development',
+  watch: true,
   entry: {
     main: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
   },
