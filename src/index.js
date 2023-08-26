@@ -8,7 +8,9 @@ import mailer from './js/mailer.js';
 
 dataAndPrices();
 mainFunc();
-mailer();
 
 const slide = document.querySelector('.' + styles.slider);
 slide ? swiper() : null;
+
+const feedbackForm = document.querySelector('.form');
+feedbackForm ? mailer(feedbackForm) : null;

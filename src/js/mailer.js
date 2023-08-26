@@ -1,50 +1,32 @@
 import Email from './smtp.js';
 
-export default function mailer() {
+export default function mailer(form) {
+  form.addEventListener('submit', uploadFile);
+};
 
-  const feedbackForm = document.querySelector('.form');
+async function uploadFile(event) {
+  event.preventDefault();
 
-  feedbackForm.addEventListener('submit', uploadFile);
+  const files = event.target.file.files;
+  const file = files[0];
 
-  async function uploadFile(event) {
-    event.preventDefault();
+  const fileToBase64 = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 
-    const files = event.target.file.files;
-    const file = files[0];
-
-    const fileToBase64 = (file) => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-
-    const message = {
-      email: event.target.email.value,
-      tel: event.target.tel.value,
-      msg: event.target.message.value,
-      data: await fileToBase64(file),
-      fileName: file.name,
-    };
-
-    // const formData = new FormData();
-    // formData.append('file', file.name);
-
-    //   try {
-    //     const response = await fetch(`/upload/${file.name}`, {
-    //       method: 'POST',
-    //       body: file,
-    //       // headers: {
-    //       //   'Content-Type' : 'application/octate-stream'
-    //       // },
-    //     });
-
-    //   } catch (error) {
-    //     console.log(error);
-    //   };
-    sendMessage(message);
+  const message = {
+    email: event.target.email.value,
+    tel: event.target.tel.value,
+    msg: event.target.message.value,
+    data: await fileToBase64(file),
+    fileName: file.name,
   };
 
+  const isSent = await sendMessage(message);
+  isSent.status ? clearFormData(event) : alert(isSent.message);
 };
 
 async function sendMessage(message) {
@@ -52,7 +34,7 @@ async function sendMessage(message) {
     SecureToken: 'e0bdc042-c8ae-4769-a1c8-0a28be166bbe',
     To: 'shulepau.vadzim@gmail.com',
     From: 'shulepau.vadzim@gmail.com',
-    Subject: "Message from MyFirePlan",
+    Subject: 'Message from MyFirePlan',
     Body: `
       <b>Email: ${message.email}</b><br>
       <b>Tel.: ${message.tel}</b><br>
@@ -64,6 +46,11 @@ async function sendMessage(message) {
       data: message.data,
     }],
   });
+  return (response === 'OK' ? { status: true } : { status: false, message: `Message not sent...\n${response}` });
+};
 
-  console.log(response)
+function clearFormData(event) {
+  for (let item of event.target) {
+    item.value = '';
+  };
 };
