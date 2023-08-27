@@ -8,21 +8,12 @@ async function uploadFile(event) {
   event.preventDefault();
 
   const files = event.target.file.files;
-  const file = files[0];
-
-  const fileToBase64 = (file) => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
 
   const message = {
     email: event.target.email.value,
     tel: event.target.tel.value,
     msg: event.target.message.value,
-    data: await fileToBase64(file),
-    fileName: file.name,
+    attachments: await addAttachments(files),
   };
 
   const isSent = await sendMessage(message);
@@ -41,10 +32,7 @@ async function sendMessage(message) {
       <b>Message</b>:<br>
       <p>${message.msg}</p>
     `,
-    Attachments: [{
-      name: message.fileName,
-      data: message.data,
-    }],
+    Attachments: message.attachments,
   });
   return (response === 'OK' ? { status: true } : { status: false, message: `Message not sent...\n${response}` });
 };
@@ -53,4 +41,27 @@ function clearFormData(event) {
   for (let item of event.target) {
     item.value = '';
   };
+};
+
+async function addAttachments(files) {
+  const attachments = [];
+  for (let item of files) {
+    attachments.push(
+      {
+        name: item.name,
+        data: await fileToBase64(item),
+      },
+    )
+  };
+
+  return attachments;
+};
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 };

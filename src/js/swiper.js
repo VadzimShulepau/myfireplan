@@ -1,7 +1,6 @@
 import Swiper from 'swiper';
 
-export default function swiper() {
-    const slider = new Swiper('.slider', {
+export const slider = new Swiper('.slider', {
       navigation: {
         nextEl: '.next-btn',
         prevEl: '.prev-btn'
@@ -68,4 +67,3 @@ export default function swiper() {
 
       },
     });
-};
