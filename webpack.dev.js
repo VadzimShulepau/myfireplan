@@ -100,7 +100,7 @@ export default {
       },
       {
         test: /\.js$/i,
-        exclude: /(node_modules|bower_components)/,
+        include: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
